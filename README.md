@@ -16,6 +16,16 @@ I hope this will be useful to you. Thanks for using Vector.
 <br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Vector-main-menu.png"/> <br>
 <br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Vector-game.png"/> <br>
 
-#Dependencies:
+# Dependencies:
 
 ### -`ncurses`
+
+# Future Features
+I want your help to continue the project, here's a list of features that I would like to add:
+- Main Menu design
+- Game design
+- Enemies
+- Splash screen
+- Music
+- Character design
+- Spanish support
