@@ -11,7 +11,11 @@ The project have this features:
 
 I hope this will be useful to you. Thanks for using Vector.
 
-Screenshots:
+# Screenshots:
 
 <br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Vector-main-menu.png"/> <br>
 <br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Vector-game.png"/> <br>
+
+#Dependencies:
+
+### -`ncurses`
