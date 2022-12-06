@@ -8,6 +8,7 @@ The project have this features:
 - A new game section 
 - Possibility to load game 
 - An options section with language and music switchers.
+- Controls menu
 
 I hope this will be useful to you. Thanks for using Vector.
 
