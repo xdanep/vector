@@ -23,11 +23,11 @@ I hope this will be useful to you. Thanks for using Vector.
 
 # To compile:
 
-### -`make`
+### $`make`
 
-### -`make run` to compile and run
+### $`make run` to compile and run
 
-### -`make clean` remove executable file
+### $`make clean` remove executable file
 
 # Future Features
 I want your help to continue the project, here's a list of features that I would like to add:

@@ -1,4 +1,4 @@
-CC=clang
+CC=gcc
 CLIBS=-lncurses
 CFLAGS=-Wall -Wextra -O2 -std=gnu99
 
