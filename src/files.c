@@ -18,7 +18,7 @@ void init_dir()
     i = strlen(getlogin());
     user = malloc(i);
 
-    if(user == NULL)
+    if (user == NULL)
     {
         printf("Cannot allocate dynamic memory");
         free(user);
@@ -30,9 +30,9 @@ void init_dir()
 
     strcat(dir, "/.vector/");
 
-    if (mkdir(dir, S_IRWXU | S_IRWXG | S_IRWXO) == -1) 
+    if (mkdir(dir, S_IRWXU | S_IRWXG | S_IRWXO) == -1)
     {
-        if(errno != EEXIST)
+        if (errno != EEXIST)
         {
             printf("Error: %s, enter to exit\n", strerror(errno), errno);
             getchar();
@@ -42,84 +42,84 @@ void init_dir()
     strcpy(dir2, dir);
     strcat(dir2, "conf/");
 
-    if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) 
+    if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1)
     {
-        if(errno != EEXIST)
+        if (errno != EEXIST)
         {
             printf("Error: %s, enter to exit\n", strerror(errno));
             getchar();
         }
     }
-    
+
     free(user);
 }
 
-void LoadOptions(OPTION*O)
+void LoadOptions(OPTION *O)
 {
-    FILE*fPtr;
+    FILE *fPtr;
     char dirl[200];
 
     strcpy(dirl, dir2);
     strcat(dirl, "options.bin");
-    
-    if((fPtr = fopen(dirl, "rb")) == NULL)
-    return;
+
+    if ((fPtr = fopen(dirl, "rb")) == NULL)
+        return;
 
     else
-    fread(O, sizeof(OPTION), 1, fPtr);
+        fread(O, sizeof(OPTION), 1, fPtr);
 
     fclose(fPtr);
 }
 
-void SaveOptions(OPTION*O)
+void SaveOptions(OPTION *O)
 {
-    FILE*fPtr;
+    FILE *fPtr;
     char dirl[200];
 
     strcpy(dirl, dir2);
     strcat(dirl, "options.bin");
 
-    if((fPtr = fopen(dirl, "wb")) == NULL)
+    if ((fPtr = fopen(dirl, "wb")) == NULL)
     {
         printf("Error, cannot save\n");
         return;
     }
 
     else
-    fwrite(O, sizeof(OPTION), 1, fPtr);
+        fwrite(O, sizeof(OPTION), 1, fPtr);
 
     fclose(fPtr);
 }
 
-void SaveGame(PLAYER*P)
+void SaveGame(PLAYER *P)
 {
-    FILE*fPtr;
+    FILE *fPtr;
     char dirl[200];
 
     strcpy(dirl, dir);
     strcat(dirl, "save.bin");
 
-    if((fPtr = fopen(dirl, "wb")) == NULL)
+    if ((fPtr = fopen(dirl, "wb")) == NULL)
     {
         printf("Error, cannot save\n");
         return;
     }
 
     else
-    fwrite(P, sizeof(PLAYER), 1, fPtr);
+        fwrite(P, sizeof(PLAYER), 1, fPtr);
 
     fclose(fPtr);
 }
 
-unsigned short int LoadGame(PLAYER*P)
+unsigned short int LoadGame(PLAYER *P)
 {
-    FILE*fPtr;
+    FILE *fPtr;
     char dirl[200];
-    
+
     strcpy(dirl, dir);
     strcat(dirl, "save.bin");
 
-    if((fPtr = fopen(dirl, "rb")) == NULL)
+    if ((fPtr = fopen(dirl, "rb")) == NULL)
     {
         printf("No data saved, press enter to continue\n");
         setbuf(stdin, NULL);
@@ -127,7 +127,7 @@ unsigned short int LoadGame(PLAYER*P)
         return 0;
     }
     else
-    fread(P, sizeof(PLAYER), 1, fPtr);
+        fread(P, sizeof(PLAYER), 1, fPtr);
 
     fclose(fPtr);
     return 1;

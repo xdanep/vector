@@ -23,25 +23,25 @@ int main()
 
     do
     {
-        system("clear");//activate for linux
-        //system("CLS");//activate for windows
-        printf("Welcome to Vector\n\n");//Replace X by the name of the game
+        system("clear"); // activate for linux
+        // system("CLS");//activate for windows
+        printf("Welcome to Vector\n\n"); // Replace X by the name of the game
         menu();
         printf(">");
         scanf("%hu", &select);
 
-        if(select == 1)
+        if (select == 1)
         {
             ngame(&P);
-            SaveGame(&P); 
+            SaveGame(&P);
             start();
             select = 5;
         }
-        else if(select == 2)
+        else if (select == 2)
         {
             gst = LoadGame(&P);
 
-            if(gst)
+            if (gst)
             {
                 start();
                 select = 5;
@@ -53,29 +53,29 @@ int main()
             }
         }
 
-        else if(select == 3)
+        else if (select == 3)
         {
             options();
             SaveOptions(&O);
             select = 5;
         }
 
-        else if(select == 4)
+        else if (select == 4)
         {
             controls();
             select = 5;
         }
 
-        else if(select == 0)
-        continue;
+        else if (select == 0)
+            continue;
 
         else
         {
             printf("Wrong selection, press enter to select again");
-            setbuf (stdin, NULL);
+            setbuf(stdin, NULL);
             getchar();
         }
-    }while(select > 4);
+    } while (select > 4);
 
     exit(EXIT_SUCCESS);
 }
