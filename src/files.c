@@ -22,7 +22,7 @@ void init_dir()
     {
         printf("Cannot allocate dynamic memory");
         free(user);
-        EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 
     strcpy(user, getlogin());
