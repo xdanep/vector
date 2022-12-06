@@ -42,11 +42,11 @@ void start()
 {
     int x = 10, y = 10;
     int key;
-    int dim_x , dim_y;//dimension de la ventana
+    int dim_x, dim_y; // dimension de la ventana
 
-    initscr();// inicia ncurses
+    initscr(); // inicia ncurses
 
-    getmaxyx (stdscr,dim_y ,dim_x );// Obtengo las dimensiones
+    getmaxyx(stdscr, dim_y, dim_x); // Obtengo las dimensiones
 
     // inicializar colores
     if (start_color() == ERR || !has_colors() || !can_change_color())
@@ -56,11 +56,11 @@ void start()
         fputs("Could not use colors.", stderr);
         exit(EXIT_FAILURE);
     }
-    
+
     init_pair(1, P.cstate, COLOR_BLACK); // texto amarillo sobre fondo negro
     init_pair(2, COLOR_WHITE, COLOR_BLACK);
-    attron(COLOR_PAIR(1)); //establecer color a la ventana
-    
+    attron(COLOR_PAIR(1)); // establecer color a la ventana
+
     x = 1;
     y = 1;
     move(y, x);
@@ -90,8 +90,8 @@ void start()
             move(y, x);
             printw(" ");
             y--;
-            if(y == 1)
-            y++;
+            if (y == 1)
+                y++;
             move(y, x);
             printw("^");
         }
@@ -100,8 +100,8 @@ void start()
             move(y, x);
             printw(" ");
             y++;
-            if(y == (dim_y-1))
-            y--;
+            if (y == (dim_y - 1))
+                y--;
             move(y, x);
             printw("v");
         }
@@ -110,8 +110,8 @@ void start()
             move(y, x);
             printw(" ");
             x--;
-            if(x == 0)
-            x++;
+            if (x == 0)
+                x++;
             move(y, x);
             printw("<");
         }
@@ -120,8 +120,8 @@ void start()
             move(y, x);
             printw(" ");
             x++;
-            if(x == (dim_x-1))
-            x--;
+            if (x == (dim_x - 1))
+                x--;
             move(y, x);
             printw(">");
         }
