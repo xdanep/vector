@@ -29,3 +29,4 @@ I want your help to continue the project, here's a list of features that I would
 - Music
 - Character design
 - Spanish support
+- GUI
