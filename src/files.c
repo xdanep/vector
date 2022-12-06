@@ -34,7 +34,7 @@ void init_dir()
     {
         if (errno != EEXIST)
         {
-            printf("Error: %s, enter to exit\n", strerror(errno), errno);
+            printf("Error: %s, enter to exit\n", strerror(errno));
             getchar();
         }
     }

@@ -42,42 +42,43 @@ void start()
 {
     int x = 10, y = 10;
     int key;
-    WINDOW *win;
+    int dim_x , dim_y;//dimension de la ventana
 
-    if ((win = initscr()) == NULL) // inicia ncurses
-    {
-        fputs("Could not initialize screen.", stderr);
-        exit(EXIT_FAILURE);
-    }
+    initscr();// inicia ncurses
+
+    getmaxyx (stdscr,dim_y ,dim_x );// Obtengo las dimensiones
 
     // inicializar colores
     if (start_color() == ERR || !has_colors() || !can_change_color())
     {
-        delwin(win);
         endwin();
         refresh();
         fputs("Could not use colors.", stderr);
         exit(EXIT_FAILURE);
     }
-
+    
     init_pair(1, P.cstate, COLOR_BLACK); // texto amarillo sobre fondo negro
     init_pair(2, COLOR_WHITE, COLOR_BLACK);
-    // attron(COLOR_PAIR(1));//activa pareja 1
-    wbkgd(win, COLOR_PAIR(1));
+    attron(COLOR_PAIR(1)); //establecer color a la ventana
+    
     x = 1;
     y = 1;
-    wmove(win, y, x);
-    wprintw(win, "%s", P.name);
-    box(win, 0, 0);
-    wrefresh(win);
+    move(y, x);
+
+    box(stdscr, 0, 0);
+    printw("%s", P.name);
+    refresh();
+
     keypad(stdscr, 1); // activa teclas especiales
     cbreak();          // pulsacion instantanea
     refresh();
+
     x = 2;
     y = 2;
-    wmove(win, y, x);
+    move(y, x);
+
     curs_set(0);
-    wprintw(win, "^");
+    printw("^");
 
     while (1)
     {
@@ -86,49 +87,55 @@ void start()
 
         if (key == KEY_UP) // up
         {
-            wmove(win, y, x);
-            wprintw(win, " ");
+            move(y, x);
+            printw(" ");
             y--;
-            wmove(win, y, x);
-            wprintw(win, "^");
-            wrefresh(win);
+            if(y == 1)
+            y++;
+            move(y, x);
+            printw("^");
         }
         if (key == KEY_DOWN) // down
         {
-            wmove(win, y, x);
-            wprintw(win, " ");
+            move(y, x);
+            printw(" ");
             y++;
-            wmove(win, y, x);
-            wprintw(win, "v");
-            wrefresh(win);
+            if(y == (dim_y-1))
+            y--;
+            move(y, x);
+            printw("v");
         }
         if (key == KEY_LEFT) // left
         {
-            wmove(win, y, x);
-            wprintw(win, " ");
+            move(y, x);
+            printw(" ");
             x--;
-            wmove(win, y, x);
-            wprintw(win, "<");
-            wrefresh(win);
+            if(x == 0)
+            x++;
+            move(y, x);
+            printw("<");
         }
         if (key == KEY_RIGHT) // right
         {
-            wmove(win, y, x);
-            wprintw(win, " ");
+            move(y, x);
+            printw(" ");
             x++;
-            wmove(win, y, x);
-            wprintw(win, ">");
-            wrefresh(win);
+            if(x == (dim_x-1))
+            x--;
+            move(y, x);
+            printw(">");
         }
+        refresh();
         if (key == 27)
         {
-            wbkgd(win, COLOR_PAIR(2));
+            attron(COLOR_PAIR(2));
             break;
         }
     }
-    delwin(win);
     clear();
-    endwin();
     refresh();
+    endwin();
+    system("clear");
+
     return;
 }
