@@ -1,10 +1,5 @@
 /*
-Project: Vector
-Started: 28/09/2022
-Days coding: 6
-Author: Xdan
-Collaborators: similCode
-Version: 0.1.2
+Version: 0.1.3
 */
 
 #include <stdio.h>
@@ -32,7 +27,7 @@ int main()
         //system("CLS");//activate for windows
         printf("Welcome to Vector\n\n");//Replace X by the name of the game
         menu();
-        printf("::");
+        printf(">");
         scanf("%hu", &select);
 
         if(select == 1)
@@ -65,6 +60,12 @@ int main()
             select = 5;
         }
 
+        else if(select == 4)
+        {
+            controls();
+            select = 5;
+        }
+
         else if(select == 0)
         continue;
 
@@ -74,7 +75,7 @@ int main()
             setbuf (stdin, NULL);
             getchar();
         }
-    }while(select > 3);
+    }while(select > 4);
 
     exit(EXIT_SUCCESS);
 }

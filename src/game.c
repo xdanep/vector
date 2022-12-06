@@ -16,7 +16,7 @@ void ngame(PLAYER*P)
     scanf("%s", P->name);
     printf("Choose your color:\n");
     printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n");
-    printf("::");
+    printf(">");
     scanf("%hu", &sel);
 
     if(sel == 1)
@@ -63,12 +63,17 @@ void start()
     init_pair(2, COLOR_WHITE, COLOR_BLACK);
     //attron(COLOR_PAIR(1));//activa pareja 1
     wbkgd(win, COLOR_PAIR(1));
+    x = 1;
+    y = 1;
+    wmove(win,y, x);
+    wprintw(win,"%s", P.name);
     box(win, 0, 0);
     wrefresh(win);
     keypad(stdscr, 1); //activa teclas especiales
     cbreak(); //pulsacion instantanea
-    wprintw(win,"Welcome %s, press ESC to exit to main menu.\n", P.name);
     refresh();
+    x = 2;
+    y = 2;
     wmove(win,y, x);
     curs_set(0);
     wprintw(win,"^");

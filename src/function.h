@@ -5,6 +5,7 @@ void menu();
 void setmusic(OPTION*O);
 void setlang(OPTION*O);
 void options();
+void controls();
 void ngame(PLAYER*P);
 void start();
 void init_dir();

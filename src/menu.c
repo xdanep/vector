@@ -14,6 +14,7 @@ void menu()//main menu
     printf("1. Start new game\n");
     printf("2. Load game\n");
     printf("3. Options\n");
+    printf("4. Controls\n");
     printf("0. Exit\n");
 }
 
@@ -30,7 +31,7 @@ void setmusic(OPTION*O)//set music
     printf("Music ON\n");
 
     printf("1. Change\n0. Exit\n");
-    printf("::");
+    printf(">");
     scanf("%hu", &sel);
 
     if(sel == 1)
@@ -71,7 +72,7 @@ void setlang(OPTION*O)//set language
     printf("Set: Spanish\n");
 
     printf("1. Change\n0. Exit\n");
-    printf("::");
+    printf(">");
     scanf("%hu", &sel);
 
     if(sel == 1)
@@ -106,7 +107,7 @@ void options()
     //system("CLS");//activate for windows
 
     printf("1. Music\n2. Language\n0. Exit\n");
-    printf("::");
+    printf(">");
     scanf("%hu", &sel);
 
     if(sel == 1)
@@ -125,4 +126,15 @@ void options()
         getchar();
     }
     return options();
+}
+
+void controls()
+{
+    system("clear");
+    printf("Controls:\n");
+    printf("ESC to exit game.\n");
+    printf("Use arrow keys to move your character\n");
+    printf("\nPress return to go back");
+    setbuf(stdin, NULL);
+    getchar();
 }
