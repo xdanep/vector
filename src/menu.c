@@ -15,7 +15,7 @@ void menu() // main menu
     printf("2. Load game\n");
     printf("3. Options\n");
     printf("4. Controls\n");
-    printf("0. Exit\n");
+    printf("0. Exit\n\n");
 }
 
 void setmusic(OPTION *O) // set music
@@ -30,8 +30,8 @@ void setmusic(OPTION *O) // set music
     else
         printf("Music ON\n");
 
-    printf("1. Change\n0. Exit\n");
-    printf(">");
+    printf("1. Change\n0. Exit\n\n");
+    printf("> ");
     scanf("%hu", &sel);
 
     if (sel == 1)
@@ -71,8 +71,8 @@ void setlang(OPTION *O) // set language
     else
         printf("Set: Spanish\n");
 
-    printf("1. Change\n0. Exit\n");
-    printf(">");
+    printf("1. Change\n0. Exit\n\n");
+    printf("> ");
     scanf("%hu", &sel);
 
     if (sel == 1)
@@ -106,8 +106,8 @@ void options()
     system("clear"); // activate for linux
     // system("CLS");//activate for windows
 
-    printf("1. Music\n2. Language\n0. Exit\n");
-    printf(">");
+    printf("1. Music\n2. Language\n0. Exit\n\n");
+    printf("> ");
     scanf("%hu", &sel);
 
     if (sel == 1)

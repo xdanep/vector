@@ -15,19 +15,18 @@ char dir2[200];
 int main(int argc, char *argv[])
 {
     cmd(argc, argv);
-    unsigned short int select = 5, gst;
-
+    unsigned short int select = 5, gst; //selector, game state
+                                    
     init_option(&O);
     init_dir();
     LoadOptions(&O);
 
     do
     {
-        system("clear"); // activate for linux
-        // system("CLS");//activate for windows
-        printf("Welcome to Vector\n\n"); // Replace X by the name of the game
+        system("clear");    // clear terminal
+        printf("Welcome to Vector\n\n"); 
         menu();
-        printf(">");
+        printf("> ");
         scanf("%hu", &select);
 
         if (select == 1)

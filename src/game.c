@@ -8,28 +8,26 @@ void ngame(PLAYER *P)
 {
     unsigned short int sel;
 
-    system("clear"); // activate for linux
-    // system("CLS");//activate for windows
+    system("clear");
     printf("Nickname (Max 20 characters): ");
-    // fflush(stdin);//for windows
-    setbuf(stdin, NULL); // for linux
-    scanf("%s", P->name);
+    setbuf(stdin, NULL);    // clear stdin buffer
+    scanf("%s", P->name);   // introduce player's name
     printf("Choose your color:\n");
     printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n");
-    printf(">");
-    scanf("%hu", &sel);
+    printf("> ");
+    scanf("%hu", &sel);     // introduce player's color
 
     if (sel == 1)
-        P->cstate = (COLOR)3;
+        P->cstate = (COLOR)3; // yellow
 
     else if (sel == 2)
-        P->cstate = (COLOR)2;
+        P->cstate = (COLOR)2; // green
 
     else if (sel == 3)
-        P->cstate = (COLOR)4;
+        P->cstate = (COLOR)4; // blue
 
     else if (sel == 4)
-        P->cstate = (COLOR)1;
+        P->cstate = (COLOR)1; // red
 
     else
     {
@@ -120,10 +118,10 @@ void start()
             move(y, x);
             printw(" ");
             x++;
-            if (x == (dim_x - 1))
+            if (x == (dim_x - 2))
                 x--;
             move(y, x);
-            printw(">");
+            printw("> ");
         }
         refresh();
         if (key == 27)

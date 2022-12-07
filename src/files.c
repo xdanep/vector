@@ -30,7 +30,7 @@ void init_dir()
 
     strcat(dir, "/.vector/");
 
-    if (mkdir(dir, S_IRWXU | S_IRWXG | S_IRWXO) == -1)
+    if (mkdir(dir, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game files folder
     {
         if (errno != EEXIST)
         {
@@ -42,7 +42,7 @@ void init_dir()
     strcpy(dir2, dir);
     strcat(dir2, "conf/");
 
-    if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1)
+    if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game configurations folder
     {
         if (errno != EEXIST)
         {
