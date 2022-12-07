@@ -1,5 +1,6 @@
 #include "var.h"
 
+void cmd(int argc, char *argv[]);
 void init_option(OPTION *O);
 void menu();
 void setmusic(OPTION *O);
