@@ -18,12 +18,11 @@ void menu() // main menu
     printf("0. Exit\n\n");
 }
 
-void setmusic(OPTION *O) // set music
+void setmusic(OPTION *O)
 {
     unsigned short int sel;
 
-    system("clear"); // activate for linux
-    // system("CLS");//activate for windows
+    system("clear");
 
     if (O->mstate == OFF)
         printf("Music OFF\n");
@@ -58,12 +57,11 @@ void setmusic(OPTION *O) // set music
     }
 }
 
-void setlang(OPTION *O) // set language
+void setlang(OPTION *O)
 {
     unsigned short int sel;
 
-    system("clear"); // activate for linux
-    // system("CLS");//activate for windows
+    system("clear");
 
     if (O->lstate == ENGLISH)
         printf("Set: English\n");
@@ -103,8 +101,7 @@ void options()
 {
     static unsigned short int sel;
 
-    system("clear"); // activate for linux
-    // system("CLS");//activate for windows
+    system("clear");
 
     printf("1. Music\n2. Language\n0. Exit\n\n");
     printf("> ");

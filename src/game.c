@@ -31,8 +31,8 @@ void ngame(PLAYER *P)
 
     else
     {
-        printf("Default: Yellow");
-        P->cstate = (COLOR)3;
+        printf("Default: Green");
+        P->cstate = (COLOR)2;
     }
 }
 
@@ -40,14 +40,13 @@ void start()
 {
     int x = 10, y = 10;
     int key;
-    int dim_x, dim_y; // dimension de la ventana
+    int dim_x, dim_y;                       // windows dimensions
 
-    initscr(); // inicia ncurses
+    initscr();                              // start ncurses
 
-    getmaxyx(stdscr, dim_y, dim_x); // Obtengo las dimensiones
+    getmaxyx(stdscr, dim_y, dim_x);         // get windows dimensions
 
-    // inicializar colores
-    if (start_color() == ERR || !has_colors() || !can_change_color())
+    if (start_color() == ERR || !has_colors() || !can_change_color()) // start color
     {
         endwin();
         refresh();
@@ -55,27 +54,27 @@ void start()
         exit(EXIT_FAILURE);
     }
 
-    init_pair(1, P.cstate, COLOR_BLACK); // texto amarillo sobre fondo negro
+    init_pair(1, P.cstate, COLOR_BLACK);    // green text on black background
     init_pair(2, COLOR_WHITE, COLOR_BLACK);
-    attron(COLOR_PAIR(1)); // establecer color a la ventana
+    attron(COLOR_PAIR(1));                  // apply color's configuration
 
     x = 1;
     y = 1;
-    move(y, x);
+    move(y, x);                             // set cursor's position
 
-    box(stdscr, 0, 0);
+    box(stdscr, 0, 0);                      // draw a box in the screen
     printw("%s", P.name);
     refresh();
 
-    keypad(stdscr, 1); // activa teclas especiales
-    cbreak();          // pulsacion instantanea
-    refresh();
+    keypad(stdscr, 1);                      // activate all keys
+    cbreak();                               // instant push
+    refresh();                              // update window's info
 
     x = 2;
     y = 2;
     move(y, x);
 
-    curs_set(0);
+    curs_set(0);                            // remove cursor
     printw("^");
 
     while (1)
@@ -126,13 +125,13 @@ void start()
         refresh();
         if (key == 27)
         {
-            attron(COLOR_PAIR(2));
+            attron(COLOR_PAIR(2)); // white text on black background
             break;
         }
     }
     clear();
     refresh();
-    endwin();
+    endwin();                      // end ncurses
     system("clear");
 
     return;
