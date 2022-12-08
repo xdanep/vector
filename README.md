@@ -25,9 +25,13 @@ I hope this will be useful to you. Thanks for using Vector.
 
 ### $`make`
 
-### $`make run` to compile and run
+### $`make run` run program
 
-### $`make clean` remove executable file
+### $`make clean` remove compile and executable files
+
+### $`make install` install program
+
+### $`make uninstall` uninstall program
 
 # Future Features
 I want your help to continue the project, here's a list of features that I would like to add:
