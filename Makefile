@@ -26,9 +26,9 @@ install:
 
 	@sudo cp vector /usr/bin/ -r
 	-sudo cp misc/vector.desktop /usr/share/applications/ -r
-	-sudo cp misc/logo.png ~/.local/share/icons/ -r
+	-sudo cp misc/logo.png /usr/share/icons/ -r
 
 uninstall:
 	@sudo rm /usr/bin/vector -r
 	-sudo rm /usr/share/applications/vector.desktop
-	-sudo rm ~/.local/share/icons/logo.png
+	-sudo rm /usr/share/icons/logo.png

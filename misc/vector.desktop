@@ -2,7 +2,7 @@
 Name=Vector
 Comment=Game written in C
 Exec=/usr/bin/vector %F
-Icon=$HOME/.local/share/icons/logo.png
+Icon=/usr/share/icons/logo.png
 Terminal=true
 Type=Application
 Version=0.1.4
