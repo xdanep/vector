@@ -12,7 +12,8 @@
             "intelliSenseMode": "linux-gcc-x64",
             "compilerArgs": [
                 "-lncurses"
-            ]
+            ],
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4
