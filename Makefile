@@ -14,10 +14,10 @@ default: all
 all: main
 
 main: $(OBJS)
-	sudo $(CC) $(CFLAGS) -o vector $(OBJS) $(CLIBS)
+	$(CC) $(CFLAGS) -o vector $(OBJS) $(CLIBS)
 	
 clean:
-	@sudo rm -rf src/*.o vector
+	@rm -rf src/*.o vector
 	
 run: 
 	@./vector
@@ -25,10 +25,10 @@ run:
 install:
 
 	@sudo cp vector /usr/bin/ -r
-	-sudo cp misc/vector.desktop /usr/share/applications/ -r
-	-sudo cp misc/logo.png /usr/share/icons/ -r
+	@sudo cp misc/logo.png /usr/share/icons/ -r
+	@sudo cp misc/vector.desktop /usr/share/applications/ -r
 
 uninstall:
 	@sudo rm /usr/bin/vector -r
-	-sudo rm /usr/share/applications/vector.desktop
-	-sudo rm /usr/share/icons/logo.png
+	@sudo rm /usr/share/icons/logo.png
+	@sudo rm /usr/share/applications/vector.desktop
