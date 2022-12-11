@@ -105,6 +105,7 @@ void start()
         }
     }
     clear();
+    exit_vlc();
     endwin();
     return;
 }
