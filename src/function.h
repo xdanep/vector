@@ -1,6 +1,6 @@
 #include "var.h"
 
-void cmd(int argc, char *argv[]);   // CLI arguments
+void cli(int argc, char *argv[]);   // CLI arguments
 void init_option(OPTION *O);        // initialize options
 void menu();                        // display menu
 void setmusic(OPTION *O);           // music options

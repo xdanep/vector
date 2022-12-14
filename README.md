@@ -21,6 +21,8 @@ I hope this will be useful to you. Thanks for using Vector.
 
 ### -`ncurses`
 
+### -`gcc`
+
 # To compile:
 
 ### $`make`

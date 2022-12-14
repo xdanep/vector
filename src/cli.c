@@ -4,7 +4,7 @@
 #include "var.h"
 #include "function.h"
 
-void cmd(int argc, char *argv[])
+void cli(int argc, char *argv[])
 {
     if (argv[1] == NULL) // run program
     {

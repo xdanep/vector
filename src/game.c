@@ -1,21 +1,28 @@
 #include "var.h"
+#include "vlc.h"
 #include "function.h"
 #include <ncurses.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 void ngame(PLAYER *P)
 {
     unsigned short int sel;
 
+    init_music();
+    sleep(1);
     system("clear");
     printf("Nickname (Max 20 characters): ");
     setbuf(stdin, NULL);    // clear stdin buffer
     scanf("%s", P->name);   // introduce player's name
     printf("Choose your color:\n");
     printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n");
-    printf("> ");
+    printf(">");
     scanf("%hu", &sel);     // introduce player's color
+    exit_vlc();
+    game_music();
+
 
     if (sel == 1)
         P->cstate = (COLOR)3; // yellow
@@ -120,7 +127,7 @@ void start()
             if (x == (dim_x - 2))
                 x--;
             move(y, x);
-            printw("> ");
+            printw(">");
         }
         refresh();
         if (key == 27)

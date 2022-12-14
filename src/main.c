@@ -14,7 +14,7 @@ char dir2[200];
 
 int main(int argc, char *argv[])
 {
-    cmd(argc, argv);
+    cli(argc, argv);
     unsigned short int select = 5, gst; //selector, game st
 
     init_option(&O);
