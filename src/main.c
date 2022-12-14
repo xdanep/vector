@@ -5,7 +5,6 @@
 #include <string.h>
 #include "var.h"
 #include "function.h"
-#include "vlc.h"
 
 PLAYER P;
 OPTION O;

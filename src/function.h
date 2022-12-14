@@ -14,3 +14,9 @@ void LoadOptions(OPTION *O);
 void SaveOptions(OPTION *O);
 void SaveGame(PLAYER *P);
 unsigned short int LoadGame(PLAYER *P);
+
+// for music
+void init_vlc();
+void init_music();
+void game_music();
+void exit_vlc();

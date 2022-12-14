@@ -1,6 +1,5 @@
 #include "var.h"
 #include "function.h"
-#include "vlc.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>

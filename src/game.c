@@ -1,5 +1,4 @@
 #include "var.h"
-#include "vlc.h"
 #include "function.h"
 #include <ncurses.h>
 #include <unistd.h>

@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <vlc/vlc.h>
-#include "vlc.h"
+#include "function.h"
 
 libvlc_instance_t *inst;
 libvlc_media_player_t *mp;
