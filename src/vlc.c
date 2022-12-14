@@ -9,9 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <vlc/vlc.h>
-
 #include "vlc.h"
 
 libvlc_instance_t *inst;

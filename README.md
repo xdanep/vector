@@ -43,7 +43,6 @@ I want your help to continue the project, here's a list of features that I would
 - Game design
 - Enemies
 - Splash screen
-- Music
 - Character design
 - Spanish support
 - GUI

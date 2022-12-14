@@ -1,35 +1,20 @@
-CC=gcc
-CLIBS=-lncurses -lvlc
-CFLAGS=-Wall -Wextra -O2 -std=gnu99
+##
+## Makefile
+## vector
+##
+## Created by Aarch-64 on 10/12/2022
+## Copyright © 2022 Aarch-64. All rights reserved.
+##
 
-OBJS= \
-	src/files.o \
-	src/game.o \
-	src/main.o \
-	src/menu.o \
-	src/cli.o \
-	src/vlc.c
+all:
+	@echo "Building..."
+	@make -C ./src
 
-default: all
+run:
+	@make -C ./src run
 
-all: main
-
-main: $(OBJS)
-	$(CC) $(CFLAGS) -o vector $(OBJS) $(CLIBS)
-	
 clean:
-	@rm -rf src/*.o vector
-	
-run: 
-	@./vector
+	@make -C ./src clean	
 
 install:
-
-	@sudo cp vector /usr/bin/ -r
-	@sudo cp misc/logo.png /usr/share/icons/ -r
-	@sudo cp misc/vector.desktop /usr/share/applications/ -r
-
-uninstall:
-	@sudo rm /usr/bin/vector -r
-	@sudo rm /usr/share/icons/logo.png
-	@sudo rm /usr/share/applications/vector.desktop
+	@make -C ./src install

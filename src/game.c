@@ -17,8 +17,8 @@ void ngame(PLAYER *P)
     setbuf(stdin, NULL);    // clear stdin buffer
     scanf("%s", P->name);   // introduce player's name
     printf("Choose your color:\n");
-    printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n");
-    printf(">");
+    printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n\n");
+    printf("> ");
     scanf("%hu", &sel);     // introduce player's color
     exit_vlc();
     game_music();
