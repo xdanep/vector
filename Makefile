@@ -1,5 +1,5 @@
 CC=gcc
-CLIBS=-lncurses
+CLIBS=-lncurses -lvlc
 CFLAGS=-Wall -Wextra -O2 -std=gnu99
 
 OBJS= \
@@ -15,13 +15,13 @@ default: all
 all: main
 
 main: $(OBJS)
-	$(CC) $(CFLAGS) -o ../vector $(OBJS) $(CLIBS)
+	$(CC) $(CFLAGS) -o vector $(OBJS) $(CLIBS)
 	
 clean:
-	@rm -rf src/*.o ../vector
+	@rm -rf src/*.o vector
 	
 run: 
-	@.././vector
+	@./vector
 
 install:
 
