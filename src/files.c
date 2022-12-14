@@ -40,6 +40,27 @@ void init_dir()
     }
 
     strcpy(dir2, dir);
+    strcat(dir2, "music/");
+
+    if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game music folder
+    {
+        if (errno != EEXIST)
+        {
+            printf("Error: %s, enter to exit\n", strerror(errno));
+            getchar();
+        }
+    }
+
+    system("cp ../songs/cubez0r.xm ~/.vector/music/");
+    system("cp ../songs/SelfControl.mp3 ~/.vector/music/");
+
+    strcpy(ini_music, dir2);
+    strcat(ini_music, "cubez0r.xm");
+
+    strcpy(g_music, dir2);
+    strcat(g_music, "SelfControl.mp3");
+
+    strcpy(dir2, dir);
     strcat(dir2, "conf/");
 
     if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game configurations folder

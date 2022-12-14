@@ -35,7 +35,9 @@ typedef struct
 
 extern PLAYER P;
 extern OPTION O;
-extern char dir[200];
-extern char dir2[200];
+extern char dir[100];
+extern char dir2[100];
+extern char ini_music[100];
+extern char g_music[100];
 
 #endif // HEADER_LIBRARY

@@ -1,4 +1,4 @@
-// Version: 0.2.0
+// Version: 0.2.1
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,8 +9,11 @@
 PLAYER P;
 OPTION O;
 
-char dir[200];
-char dir2[200];
+char dir[100];
+char dir2[100];
+
+char ini_music[100];
+char g_music[100];
 
 int main(int argc, char *argv[])
 {

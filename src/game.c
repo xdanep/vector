@@ -73,8 +73,8 @@ void start()
     cbreak();                               // instant push
     refresh();                              // update window's info
 
-    x = 2;
-    y = 2;
+    x = dim_x/2;
+    y = dim_y/2;
     move(y, x);
 
     curs_set(0);                            // remove cursor
