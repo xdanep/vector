@@ -1,10 +1,11 @@
-// Version: 0.1.4
+// Version: 0.2.0
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "var.h"
 #include "function.h"
+#include "vlc.h"
 
 PLAYER P;
 OPTION O;
@@ -33,6 +34,10 @@ int main(int argc, char *argv[])
         {
             ngame(&P);
             SaveGame(&P);
+            
+            if(O.mstate)
+            exit_vlc();
+            
             start();
             select = 5;
         }
@@ -42,6 +47,9 @@ int main(int argc, char *argv[])
 
             if (gst)
             {
+                if(O.mstate)
+                exit_vlc();
+            
                 start();
                 select = 5;
             }

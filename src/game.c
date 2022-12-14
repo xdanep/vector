@@ -10,8 +10,6 @@ void ngame(PLAYER *P)
 {
     unsigned short int sel;
 
-    init_music();
-    sleep(1);
     system("clear");
     printf("Nickname (Max 20 characters): ");
     setbuf(stdin, NULL);    // clear stdin buffer
@@ -20,9 +18,6 @@ void ngame(PLAYER *P)
     printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n\n");
     printf("> ");
     scanf("%hu", &sel);     // introduce player's color
-    exit_vlc();
-    game_music();
-
 
     if (sel == 1)
         P->cstate = (COLOR)3; // yellow
@@ -50,6 +45,8 @@ void start()
     int dim_x, dim_y;                       // windows dimensions
 
     initscr();                              // start ncurses
+    if(O.mstate) 
+    game_music();                           // start music
 
     getmaxyx(stdscr, dim_y, dim_x);         // get windows dimensions
 
@@ -136,6 +133,13 @@ void start()
             break;
         }
     }
+    
+    if(O.mstate)
+    {
+        exit_vlc();
+        init_music();
+    }
+
     clear();
     refresh();
     endwin();                      // end ncurses

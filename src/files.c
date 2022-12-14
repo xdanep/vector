@@ -1,5 +1,6 @@
 #include "var.h"
 #include "function.h"
+#include "vlc.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
@@ -69,6 +70,9 @@ void LoadOptions(OPTION *O)
         fread(O, sizeof(OPTION), 1, fPtr);
 
     fclose(fPtr);
+
+    if(O->mstate)
+    init_music();
 }
 
 void SaveOptions(OPTION *O)
