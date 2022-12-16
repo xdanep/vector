@@ -1,5 +1,5 @@
-#include "var.h"
-#include "function.h"
+#include "include/var.h"
+#include "include/function.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
@@ -92,7 +92,10 @@ void LoadOptions(OPTION *O)
     fclose(fPtr);
 
     if(O->mstate)
-    init_music();
+    {
+        init_music();
+        sleep(1);
+    }
 }
 
 void SaveOptions(OPTION *O)

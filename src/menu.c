@@ -1,5 +1,5 @@
-#include "var.h"
-#include "function.h"
+#include "include/var.h"
+#include "include/function.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -40,6 +40,7 @@ void setmusic(OPTION *O)
             O->mstate = (MUSIC)1;
             printf("Music On\n");
             init_music();
+            sleep(1);
         }
         else
         {

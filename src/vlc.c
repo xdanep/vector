@@ -10,23 +10,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <vlc/vlc.h>
-#include "function.h"
+#include "include/function.h"
+#include "include/var.h"
 
 libvlc_instance_t *inst;
 libvlc_media_player_t *mp;
 libvlc_media_t *m;
-
-void init_vlc(void)
-{
-    // create a media play playing environment
-    mp = libvlc_media_player_new_from_media(m);
-
-    // no need to keep the media now
-    libvlc_media_release(m);
-
-    // play the media_player
-    libvlc_media_player_play(mp);
-}
 
 void init_music(void)
 {  

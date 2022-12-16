@@ -1,5 +1,5 @@
-#include "var.h"
-#include "function.h"
+#include "include/var.h"
+#include "include/function.h"
 #include <ncurses.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -11,12 +11,13 @@ void ngame(PLAYER *P)
 
     system("clear");
     printf("Nickname (Max 20 characters): ");
-    setbuf(stdin, NULL);    // clear stdin buffer
-    scanf("%s", P->name);   // introduce player's name
+    setbuf(stdin, NULL);       // clear stdin buffer
+    fgets(P->name, 20, stdin); // introduce player's name
+    strtok(P->name, "\n");     // clear \n of fgets
     printf("Choose your color:\n");
     printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n\n");
     printf("> ");
-    scanf("%hu", &sel);     // introduce player's color
+    scanf("%hu", &sel);       // introduce player's color
 
     if (sel == 1)
         P->cstate = (COLOR)3; // yellow
@@ -137,6 +138,7 @@ void start()
     {
         exit_vlc();
         init_music();
+        sleep(1);
     }
 
     clear();

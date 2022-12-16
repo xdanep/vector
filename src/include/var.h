@@ -33,8 +33,23 @@ typedef struct
     char name[21];
 } PLAYER;
 
+typedef struct version
+{
+    char version[20];
+    char help[20];
+    char namever[10];
+    char verver[20];
+    char coderver[20];
+    char builver[70];
+    char copyver[70];
+    char licever[90];
+    char typever[70];
+    char garaver[70];
+} VERSION;
+
 extern PLAYER P;
 extern OPTION O;
+extern VERSION V;
 extern char dir[100];
 extern char dir2[100];
 extern char ini_music[100];

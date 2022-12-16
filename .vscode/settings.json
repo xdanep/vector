@@ -2,6 +2,7 @@
     "files.associations": {
         "unistd.h": "c",
         "stdio.h": "c",
-        "function.h": "c"
+        "function.h": "c",
+        "var.h": "c"
     }
 }

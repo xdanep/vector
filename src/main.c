@@ -1,10 +1,10 @@
-// Version: 0.2.1
+// Version: 0.2.2
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "var.h"
-#include "function.h"
+#include "include/var.h"
+#include "include/function.h"
 
 PLAYER P;
 OPTION O;
