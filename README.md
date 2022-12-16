@@ -12,6 +12,14 @@ The project have this features:
 
 I hope this will be useful to you. Thanks for using Vector.
 
+# Instalation:
+- Open vector's folder
+- Open terminal
+- make, make install
+- Play
+
+Below you can find compiling commands.
+
 # Screenshots:
 
 <br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Vector-main-menu.png"/> <br>
