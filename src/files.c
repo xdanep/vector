@@ -73,6 +73,8 @@ void init_dir()
             getchar();
         }
     }
+
+    VerSaveVar();
 }
 
 unsigned short int LoadOptions(OPTION *O)
