@@ -17,7 +17,8 @@ OBJS= \
 	menu.o \
 	cli.o \
 	version.o \
-	vlc.o
+	vlc.o \
+	screen.o
 
 default: all
 

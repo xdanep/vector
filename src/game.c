@@ -1,5 +1,6 @@
 #include "include/var.h"
 #include "include/function.h"
+#include "include/screen.h"
 #include <ncurses.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -9,15 +10,16 @@ void ngame(PLAYER *P)
 {
     unsigned short int sel;
 
-    system("clear");
-    printf("Nickname (Max 20 characters): ");
+    clear_s();
+    move_c(0, dim_y/2 - 2);
+    print("Nickname (Max 20 characters): ");
     setbuf(stdin, NULL);       // clear stdin buffer
-    fgets(P->name, 20, stdin); // introduce player's name
+    getstr(P->name); // introduce player's name
     strtok(P->name, "\n");     // clear \n of fgets
-    printf("Choose your color:\n");
-    printf("1. Yellow\n2. Green\n3. Blue\n4. Red\n\n");
-    printf("> ");
-    scanf("%hu", &sel);       // introduce player's color
+    print("Choose your color:\n");
+    print("1. Yellow\n2. Green\n3. Blue\n4. Red\n\n");
+    print("> ");
+    scan("%hu", &sel);       // introduce player's color
 
     if (sel == 1)
         P->cstate = (COLOR)3; // yellow
@@ -33,7 +35,7 @@ void ngame(PLAYER *P)
 
     else
     {
-        printf("Default: Green");
+        print("Default: Green");
         P->cstate = (COLOR)2;
     }
 }
@@ -42,44 +44,38 @@ void start()
 {
     int x = 10, y = 10;
     int key;
-    int dim_x, dim_y;                       // windows dimensions
 
-    initscr();                              // start ncurses
+    clear_s();
+    
     if(O.mstate) 
     game_music();                           // start music
 
-    getmaxyx(stdscr, dim_y, dim_x);         // get windows dimensions
-
-    if (start_color() == ERR || !has_colors() || !can_change_color()) // start color
-    {
-        endwin();
-        refresh();
-        fputs("Could not use colors.", stderr);
-        exit(EXIT_FAILURE);
-    }
-
     init_pair(1, P.cstate, COLOR_BLACK);    // green text on black background
     init_pair(2, COLOR_WHITE, COLOR_BLACK);
-    attron(COLOR_PAIR(1));                  // apply color's configuration
+    init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
+    init_pair(4, COLOR_CYAN, COLOR_BLACK);
+    attron(COLOR_PAIR(3));                  // apply color's configuration
+
+    box(stdscr, 0, 0);                      // draw a box in the screen
+    attron(COLOR_PAIR(4)); 
 
     x = 1;
     y = 1;
-    move(y, x);                             // set cursor's position
+    move_c(y, x);                             // set cursor's position
 
-    box(stdscr, 0, 0);                      // draw a box in the screen
-    printw("%s", P.name);
-    refresh();
-
+    print(P.name);
+    attron(COLOR_PAIR(1)); 
+    refresh_s();
     keypad(stdscr, 1);                      // activate all keys
     cbreak();                               // instant push
-    refresh();                              // update window's info
+    refresh_s();                              // update window's info
 
     x = dim_x/2;
     y = dim_y/2;
     move(y, x);
 
     curs_set(0);                            // remove cursor
-    printw("^");
+    print("^");
 
     while (1)
     {
@@ -126,7 +122,7 @@ void start()
             move(y, x);
             printw(">");
         }
-        refresh();
+        refresh_s();
         if (key == 27)
         {
             attron(COLOR_PAIR(2)); // white text on black background
@@ -141,10 +137,11 @@ void start()
         sleep(1);
     }
 
-    clear();
+    clear_s();
+    echo();
+    curs_set(1); 
+    keypad(stdscr, 0);
     refresh();
-    endwin();                      // end ncurses
-    system("clear");
 
     return;
 }

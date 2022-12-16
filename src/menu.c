@@ -1,5 +1,6 @@
 #include "include/var.h"
 #include "include/function.h"
+#include "include/screen.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -34,41 +35,49 @@ void lang_option(OPTION *O)
 
 void menu() // main menu
 {
-    printf("1. Start new game\n");
-    printf("2. Load game\n");
-    printf("3. Options\n");
-    printf("4. Controls\n");
-    printf("0. Exit\n\n");
+    move_c(dim_x/2 - 8, dim_y/2 - 2);
+    print("1. Start new game\n");
+    move_c(dim_x/2 - 8, dim_y/2 - 1);
+    print("2. Load game\n");
+    move_c(dim_x/2 - 8, dim_y/2);
+    print("3. Options\n");
+    move_c(dim_x/2 - 8, dim_y/2 + 1);
+    print("4. Controls\n");
+    move_c(dim_x/2 - 8, dim_y/2 + 2);
+    print("0. Exit\n\n");
 }
 
 void setmusic(OPTION *O)
 {
     unsigned short int sel;
 
-    system("clear");
-
+    clear_s();
+    
+    move_c(0, dim_y/2 - 2);
     if (O->mstate == OFF)
-        printf("Music OFF\n");
+        print("Music OFF\n");
     else
-        printf("Music ON\n");
-
-    printf("1. Change\n0. Exit\n\n");
-    printf("> ");
-    scanf("%hu", &sel);
+        print("Music ON\n");
+    
+    print("1. Change\n");
+    print("0. Exit\n\n");
+    print("> ");
+    scan("%hu", &sel);
 
     if (sel == 1)
-    {
+    {   
+        move_c(0, dim_y/2 - 2);
         if (O->mstate == OFF)
         {
             O->mstate = (MUSIC)1;
-            printf("Music On\n");
+            print("Music On\n");
             init_music();
             sleep(1);
         }
         else
         {
             O->mstate = (MUSIC)0;
-            printf("Music OFF\n");
+            print("Music OFF\n");
             exit_vlc();
             
         }
@@ -77,8 +86,9 @@ void setmusic(OPTION *O)
         return;
 
     else
-    {
-        printf("Wrong selection, press enter to go back");
+    {   
+        move_c(0, dim_y/2 + 2);
+        print("Wrong selection, press enter to go back");
         setbuf(stdin, NULL);
         getchar();
     }
@@ -88,37 +98,42 @@ void setlang(OPTION *O)
 {
     unsigned short int sel;
 
-    system("clear");
+    clear_s();
+
+    move_c(0, dim_y/2 - 2);
 
     if (O->lstate == ENGLISH)
-        printf("Set: English\n");
+        print("Set: English\n");
 
     else
-        printf("Set: Spanish\n");
+        print("Set: Spanish\n");
 
-    printf("1. Change\n0. Exit\n\n");
-    printf("> ");
-    scanf("%hu", &sel);
+    print("1. Change\n0. Exit\n\n");
+    print("> ");
+    scan("%hu", &sel);
 
     if (sel == 1)
     {
+        
+        move_c(0, dim_y/2 - 2);   
         if (O->lstate == ENGLISH)
         {
             O->lstate = (LANGUAGE)1;
-            printf("Selected: Spanish\n");
+            print("Selected: Spanish\n");
         }
         else
         {
             O->lstate = (LANGUAGE)0;
-            printf("Selected: English\n");
+            print("Selected: English\n");
         }
     }
     else if (sel == 0)
         return;
 
     else
-    {
-        printf("Wrong selection, press enter to go back");
+    {   
+        move_c(0, dim_y/2 + 2);
+        print("Wrong selection, press enter to go back");
         setbuf(stdin, NULL);
         getchar();
     }
@@ -128,11 +143,11 @@ void options()
 {
     static unsigned short int sel;
 
-    system("clear");
-
-    printf("1. Music\n2. Language\n0. Exit\n\n");
-    printf("> ");
-    scanf("%hu", &sel);
+    clear_s();
+    move_c(0, dim_y/2 - 2);
+    print("1. Music\n2. Language\n0. Exit\n\n");
+    print("> ");
+    scan("%hu", &sel);
 
     if (sel == 1)
         setmusic(&O);
@@ -145,7 +160,8 @@ void options()
 
     else
     {
-        printf("Wrong selection, press enter to select again");
+        move_c(0, dim_y/2 + 2);
+        print("Wrong selection, press enter to select again");
         setbuf(stdin, NULL);
         getchar();
     }
@@ -154,11 +170,12 @@ void options()
 
 void controls()
 {
-    system("clear");
-    printf("Controls:\n");
-    printf("ESC to exit game.\n");
-    printf("Use arrow keys to move your character\n");
-    printf("\nPress return to go back");
+    clear_s();
+    move_c(0, dim_y/2 - 2);
+    print("Controls:\n");
+    print("ESC to exit game.\n");
+    print("Use arrow keys to move your character\n");
+    print("\nPress return to go back");
     setbuf(stdin, NULL);
     getchar();
 }

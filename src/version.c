@@ -15,7 +15,7 @@
 #include "include/function.h"
 
 #define PROJECT_NAME "Vector"
-#define PROJECT_VERSION "0.2.2"
+#define PROJECT_VERSION "0.3.0"
 #define CODER_NAME "Olympo"
 #define ARCHITECTURE_BUILD "x86_64-pc-linux-gnu"
 #define CONTRIBUTORS "Aarch-64 & xdanep"

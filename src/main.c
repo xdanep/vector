@@ -3,6 +3,7 @@
 #include <string.h>
 #include "include/var.h"
 #include "include/function.h"
+#include "include/screen.h"
 
 PLAYER P;
 OPTION O;
@@ -16,7 +17,9 @@ char g_music[100];
 int main(int argc, char *argv[])
 {
     cli(argc, argv);
-    unsigned short int select = 5, gst; //selector, game st
+    
+    unsigned short int select = 5;
+    unsigned short int gst; //selector, game st
 
     init_option(&O);
     init_dir();
@@ -25,13 +28,16 @@ int main(int argc, char *argv[])
     if(gst)
     lang_option(&O);
 
+    start_s();
+
     do
     {
-        system("clear");    // clear terminal
-        printf("Welcome to Vector\n\n"); 
+        clear_s();    // clear terminal
         menu();
-        printf("> ");
-        scanf("%hu", &select);
+        move_c(dim_x/2 - 8, dim_y/2 + 4);
+        print("> ");
+        scan("%hu", &select);
+
 
         if (select == 1)
         {
@@ -81,11 +87,14 @@ int main(int argc, char *argv[])
 
         else
         {
+
+            move_c(dim_x/2 - 8, dim_y/2 + 4);
             printf("Wrong selection, press enter to select again");
             setbuf(stdin, NULL);
             getchar();
         }
     } while (select > 4);
 
+    exit_s();
     exit(EXIT_SUCCESS);
 }
