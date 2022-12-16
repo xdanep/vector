@@ -8,6 +8,8 @@ void cli(int argc, char *argv[])
 {
     (void)argc;
 
+    VerSaveVar();
+
     if (argc == 2)
     {
         if (!strcmp(argv[1], V.help)) // display help

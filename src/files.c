@@ -14,8 +14,6 @@ void init_dir()
     char *user;
     unsigned short int i;
 
-    VerSaveVar();
-
     strcpy(dir, "/home/");
 
     i = strlen(getlogin());

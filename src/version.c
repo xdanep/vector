@@ -3,7 +3,6 @@
 // vector
 //
 // Created by Aarch-64 on 8/12/2022
-// Copyright © 2022 Aarch-64. All rights reserved.
 //
 
 #include <string.h>
@@ -16,7 +15,7 @@
 
 #define PROJECT_NAME "Vector"
 #define PROJECT_VERSION "0.3.1"
-#define CODER_NAME "Xdanep"
+#define MAIN_CODER "Xdanep"
 #define ARCHITECTURE_BUILD "x86_64-pc-linux-gnu"
 #define CONTRIBUTORS "Aarch-64"
 
@@ -36,18 +35,19 @@ void VerSaveVar(void)
     // //
     strcat(V.namever, " ");
     strcpy(V.verver, PROJECT_VERSION);
-    // //
-    strcat(V.verver, "(");
-    strcpy(V.coderver, CODER_NAME);
-    strcat(V.coderver, ")");
-    strcat(V.coderver, "\n");
+    strcat(V.verver, "\n");
     //
     strcpy(V.builver, "This program was built for");
     strcat(V.builver, " ");
     strcat(V.builver, ARCHITECTURE_BUILD);
     strcat(V.builver, "\n");
     //
-    strcpy(V.copyver, "Copyright (C) 2022-2022");
+    strcpy(V.coderver, "Main coder:");
+    strcat(V.coderver, " ");
+    strcat(V.coderver, MAIN_CODER);
+    strcat(V.coderver, "\n");
+
+    strcpy(V.copyver, "Contributors:");
     strcat(V.copyver, " ");
     strcat(V.copyver, CONTRIBUTORS);
     strcat(V.copyver, ".");
@@ -89,12 +89,12 @@ void VerSaveVar(void)
     {
         fputs("PROJECT NAME: ", verfile);
         fputs(PROJECT_NAME, verfile);
-        fputs("\nCODER NAME: ", verfile);
-        fputs(CODER_NAME, verfile);
         fputs("\nVERSION: ", verfile);
         fputs(PROJECT_VERSION, verfile);
         fputs("\nARCHITECTURE: ", verfile);
         fputs(ARCHITECTURE_BUILD, verfile);
+        fputs("\nMAIN CODER: ", verfile);
+        fputs(MAIN_CODER, verfile);
         fputs("\nCONTRIBUTORS: ", verfile);
         fputs(CONTRIBUTORS, verfile);
     }
