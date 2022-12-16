@@ -28,6 +28,8 @@ void init_dir()
     strcpy(user, getlogin());
     strcat(dir, user);
 
+    free(user);
+
     strcat(dir, "/.vector/");
 
     if (mkdir(dir, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game files folder
@@ -50,7 +52,7 @@ void init_dir()
             getchar();
         }
     }
-
+    
     system("cp ../songs/cubez0r.xm ~/.vector/music/");
     system("cp ../songs/SelfControl.mp3 ~/.vector/music/");
 
@@ -71,8 +73,6 @@ void init_dir()
             getchar();
         }
     }
-
-    free(user);
 }
 
 void LoadOptions(OPTION *O)

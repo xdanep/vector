@@ -8,29 +8,34 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #include "include/var.h"
 #include "include/function.h"
 
-#define PROYECT_NAME "Vector"
-#define PROYECT_VERSION "0.2.1"
+#define PROJECT_NAME "Vector"
+#define PROJECT_VERSION "0.2.2"
 #define CODER_NAME "Olympo"
-#define ARQUITECTURE_BUILD "x86_64-pc-linux-gnu"
+#define ARCHITECTURE_BUILD "x86_64-pc-linux-gnu"
 #define CONTRIBUTORS "Aarch-64 & xdanep"
 
 VERSION V;
 
-FILE *verfile;
-
 void VerSaveVar(void)
 {
+
+    FILE *verfile;
+    char *user;
+    unsigned short int i;
+
     strcpy(V.version, "--version");
     strcpy(V.help, "--help");
     //
-    strcpy(V.namever, PROYECT_NAME);
+    strcpy(V.namever, PROJECT_NAME);
     // //
     strcat(V.namever, " ");
-    strcpy(V.verver, PROYECT_VERSION);
+    strcpy(V.verver, PROJECT_VERSION);
     // //
     strcat(V.verver, "(");
     strcpy(V.coderver, CODER_NAME);
@@ -39,7 +44,7 @@ void VerSaveVar(void)
     //
     strcpy(V.builver, "This program was built for");
     strcat(V.builver, " ");
-    strcat(V.builver, ARQUITECTURE_BUILD);
+    strcat(V.builver, ARCHITECTURE_BUILD);
     strcat(V.builver, "\n");
     //
     strcpy(V.copyver, "Copyright (C) 2022-2022");
@@ -57,19 +62,42 @@ void VerSaveVar(void)
     strcpy(V.garaver, "There is no WARRANTY, up to the limits permitted by applicable laws.");
     strcat(V.garaver, "\n");
     //
-    
-    verfile=fopen("version.txt","w");
-    
-    fputs("PROYECT NAME: ", verfile);
-    fputs(PROYECT_NAME, verfile);
-    fputs("\nCODER NAME: ", verfile);
-    fputs(CODER_NAME, verfile);
-    fputs("\nVERSION: ", verfile);
-    fputs(PROYECT_VERSION, verfile);
-    fputs("\nARQUITECTURE: ",verfile);
-    fputs(ARQUITECTURE_BUILD, verfile);
-    fputs("\nCONTRIBUTORS: ", verfile);
-    fputs(CONTRIBUTORS, verfile);
+
+    strcpy(dir, "/home/");
+
+    i = strlen(getlogin());
+    user = malloc(i);
+
+    if (user == NULL)
+    {
+        printf("Cannot allocate dynamic memory");
+        free(user);
+        exit(EXIT_FAILURE);
+    }
+
+    strcpy(user, getlogin());
+    strcat(dir, user);
+
+    strcat(dir, "/.vector/version.txt");
+
+    if((verfile = fopen(dir,"w")) == NULL)
+    {
+        printf("File can't be opened\n");
+        return;
+    }
+    else
+    {
+        fputs("PROJECT NAME: ", verfile);
+        fputs(PROJECT_NAME, verfile);
+        fputs("\nCODER NAME: ", verfile);
+        fputs(CODER_NAME, verfile);
+        fputs("\nVERSION: ", verfile);
+        fputs(PROJECT_VERSION, verfile);
+        fputs("\nARCHITECTURE: ",verfile);
+        fputs(ARCHITECTURE_BUILD, verfile);
+        fputs("\nCONTRIBUTORS: ", verfile);
+        fputs(CONTRIBUTORS, verfile);
+    }
 
     fclose(verfile);
 }

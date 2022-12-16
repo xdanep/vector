@@ -2,6 +2,7 @@
 #include "include/function.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 void init_option(OPTION *O)
 {
