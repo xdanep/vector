@@ -16,9 +16,9 @@
 
 #define PROJECT_NAME "Vector"
 #define PROJECT_VERSION "0.3.1"
-#define CODER_NAME "Olympo"
+#define CODER_NAME "Xdanep"
 #define ARCHITECTURE_BUILD "x86_64-pc-linux-gnu"
-#define CONTRIBUTORS "Aarch-64 & xdanep"
+#define CONTRIBUTORS "Aarch-64"
 
 VERSION V;
 

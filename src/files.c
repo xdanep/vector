@@ -14,6 +14,8 @@ void init_dir()
     char *user;
     unsigned short int i;
 
+    VerSaveVar();
+
     strcpy(dir, "/home/");
 
     i = strlen(getlogin());
@@ -53,9 +55,6 @@ void init_dir()
             getchar();
         }
     }
-    
-    system("cp ../songs/cubez0r.xm ~/.vector/music/");
-    system("cp ../songs/SelfControl.mp3 ~/.vector/music/");
 
     strcpy(ini_music, dir2);
     strcat(ini_music, "cubez0r.xm");
@@ -74,8 +73,6 @@ void init_dir()
             getchar();
         }
     }
-
-    VerSaveVar();
 }
 
 unsigned short int LoadOptions(OPTION *O)

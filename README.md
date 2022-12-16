@@ -20,6 +20,9 @@ I hope this will be useful to you. Thanks for using Vector.
 
 Below you can find compiling commands.
 
+# WARNING!
+- You must follow the instalation guide, otherwise music will not be playing and program will not work properly. Also you can copy manually music files in this directoy ~/.vector/music/
+
 # Screenshots:
 
 <br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Charging.png"/> <br>
