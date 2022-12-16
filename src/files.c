@@ -75,7 +75,7 @@ void init_dir()
     }
 }
 
-void LoadOptions(OPTION *O)
+unsigned short int LoadOptions(OPTION *O)
 {
     FILE *fPtr;
     char dirl[200];
@@ -84,7 +84,7 @@ void LoadOptions(OPTION *O)
     strcat(dirl, "options.bin");
 
     if ((fPtr = fopen(dirl, "rb")) == NULL)
-        return;
+        return 1;
 
     else
         fread(O, sizeof(OPTION), 1, fPtr);
@@ -96,6 +96,7 @@ void LoadOptions(OPTION *O)
         init_music();
         sleep(1);
     }
+    return 0;
 }
 
 void SaveOptions(OPTION *O)

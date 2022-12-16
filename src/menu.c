@@ -10,6 +10,28 @@ void init_option(OPTION *O)
     O->mstate = (MUSIC)1;
 }
 
+void lang_option(OPTION *O)
+{
+    unsigned short int sel = 3;
+
+    printf("Select language:\n0. English\n1. Spanish\n2. Portuguese\n\n");
+    printf("> ");
+    scanf("%hu", &sel);
+
+    if(sel == 0)
+    O->lstate = (LANGUAGE)0;
+    else if(sel == 1)
+    O->lstate = (LANGUAGE)1;
+    else if(sel == 2)
+    O->lstate = (LANGUAGE)2;
+    else
+    {
+        printf("Selected default (ENGLISH), press enter to continue\n");
+        getchar();
+        O->lstate = (LANGUAGE)0;
+    }
+}
+
 void menu() // main menu
 {
     printf("1. Start new game\n");

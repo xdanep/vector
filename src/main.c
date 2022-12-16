@@ -20,7 +20,10 @@ int main(int argc, char *argv[])
 
     init_option(&O);
     init_dir();
-    LoadOptions(&O);
+    gst = LoadOptions(&O);
+
+    if(gst)
+    lang_option(&O);
 
     do
     {

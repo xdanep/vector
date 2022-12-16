@@ -9,7 +9,8 @@ typedef enum
 typedef enum
 {
     ENGLISH = 0,
-    SPANISH
+    SPANISH,
+    PORTUGUESE
 } LANGUAGE;
 typedef enum
 {
