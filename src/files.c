@@ -91,7 +91,7 @@ unsigned short int LoadOptions(OPTION *O)
 
     fclose(fPtr);
 
-    if(O->mstate)
+    if (O->mstate)
     {
         init_music();
         sleep(1);
@@ -149,7 +149,7 @@ unsigned short int LoadGame(PLAYER *P)
 
     if ((fPtr = fopen(dirl, "rb")) == NULL)
     {
-        move_c(dim_x/2 - 8, dim_y/2 + 4);
+        move_c(dim_x / 2 - 8, dim_y / 2 + 4);
         print("No data saved, press enter to continue\n");
         setbuf(stdin, NULL);
         getchar();

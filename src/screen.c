@@ -7,33 +7,33 @@
 #include <string.h>
 #include <stdio.h>
 
-int dim_x, dim_y;                       // windows dimensions
+int dim_x, dim_y; // windows dimensions
 
 void start_s()
 {
     int x = 10, y = 10;
 
-    initscr();                              // start ncurses
+    initscr(); // start ncurses
 
-    getmaxyx(stdscr, dim_y, dim_x);         // get windows dimensions
+    getmaxyx(stdscr, dim_y, dim_x); // get windows dimensions
 
     if (start_color() == ERR || !has_colors() || !can_change_color()) // start color
     {
-        endwin();
+        endwin(); // close ncurses
         refresh();
         fputs("Could not use colors.", stderr);
         exit(EXIT_FAILURE);
     }
 
-    init_pair(1, COLOR_WHITE, COLOR_BLACK);
-    attron(COLOR_PAIR(1));                  // apply color's configuration
-    box(stdscr, 0, 0);                      // draw a box in the screen
+    init_pair(1, COLOR_WHITE, COLOR_BLACK); // set white text on black background
+    attron(COLOR_PAIR(1)); // apply color's configuration
+    box(stdscr, 0, 0);     // draw a box in the screen
     refresh();
-    
-    x = dim_x/2 - 2;
-    y = dim_y/2;
+
+    x = dim_x / 2 - 2;
+    y = dim_y / 2;
     move(y, x);
-    curs_set(0);                            // remove cursor
+    curs_set(0); // remove cursor
     printw("VECTOR");
     refresh();
     sleep(3);
@@ -57,7 +57,7 @@ void print(const char *string)
     refresh();
 }
 
-void scan(const char *type, void*var)
+void scan(const char *type, void *var)
 {
     scanw(type, var);
 }

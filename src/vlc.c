@@ -1,4 +1,4 @@
-// 
+//
 // vlc.c
 // Vector
 //
@@ -30,7 +30,7 @@ void init_vlc(void)
 }
 
 void init_music(void)
-{  
+{
     // load the vlc engine
     inst = libvlc_new(0, NULL);
 
@@ -41,16 +41,15 @@ void init_music(void)
 }
 
 void game_music(void)
-{  
+{
     // load the vlc engine
     inst = libvlc_new(0, NULL);
 
     // create a new item
     m = libvlc_media_new_path(inst, g_music);
-    
+
     init_vlc();
 }
-
 
 void exit_vlc(void)
 {
@@ -59,6 +58,6 @@ void exit_vlc(void)
 
     // free the media_player
     libvlc_media_player_release(mp);
-    
+
     libvlc_release(inst);
 }

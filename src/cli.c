@@ -8,7 +8,7 @@ void cli(int argc, char *argv[])
 {
     (void)argc;
 
-    if (argc==2)
+    if (argc == 2)
     {
         if (!strcmp(argv[1], V.help)) // display help
         {
@@ -17,7 +17,7 @@ void cli(int argc, char *argv[])
         }
         else if (!strcmp(argv[1], V.version)) // display program version
         {
-            printf("%s%s%s%s%s%s%s%s",V.namever,V.verver,V.coderver,V.builver,V.copyver,V.licever,V.typever,V.garaver);
+            printf("%s%s%s%s%s%s%s%s", V.namever, V.verver, V.coderver, V.builver, V.copyver, V.licever, V.typever, V.garaver);
             exit(EXIT_SUCCESS);
         }
     }

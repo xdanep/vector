@@ -1,4 +1,4 @@
-// 
+//
 // version.c
 // vector
 //
@@ -80,7 +80,7 @@ void VerSaveVar(void)
 
     strcat(dir, "/.vector/version.txt");
 
-    if((verfile = fopen(dir,"w")) == NULL)
+    if ((verfile = fopen(dir, "w")) == NULL)
     {
         printf("File can't be opened\n");
         return;
@@ -93,7 +93,7 @@ void VerSaveVar(void)
         fputs(CODER_NAME, verfile);
         fputs("\nVERSION: ", verfile);
         fputs(PROJECT_VERSION, verfile);
-        fputs("\nARCHITECTURE: ",verfile);
+        fputs("\nARCHITECTURE: ", verfile);
         fputs(ARCHITECTURE_BUILD, verfile);
         fputs("\nCONTRIBUTORS: ", verfile);
         fputs(CONTRIBUTORS, verfile);

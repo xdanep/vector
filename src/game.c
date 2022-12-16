@@ -11,15 +11,15 @@ void ngame(PLAYER *P)
     unsigned short int sel;
 
     clear_s();
-    move_c(0, dim_y/2 - 2);
+    move_c(0, dim_y / 2 - 2);
     print("Nickname (Max 20 characters): ");
-    setbuf(stdin, NULL);       // clear stdin buffer
-    getstr(P->name); // introduce player's name
-    strtok(P->name, "\n");     // clear \n of fgets
+    setbuf(stdin, NULL);   // clear stdin buffer
+    getstr(P->name);       // introduce player's name
+    strtok(P->name, "\n"); // clear \n of fgets
     print("Choose your color:\n");
     print("1. Yellow\n2. Green\n3. Blue\n4. Red\n\n");
     print("> ");
-    scan("%hu", &sel);       // introduce player's color
+    scan("%hu", &sel); // introduce player's color
 
     if (sel == 1)
         P->cstate = (COLOR)3; // yellow
@@ -46,35 +46,35 @@ void start()
     int key;
 
     clear_s();
-    
-    if(O.mstate) 
-    game_music();                           // start music
 
-    init_pair(1, P.cstate, COLOR_BLACK);    // green text on black background
+    if (O.mstate)
+        game_music(); // start music
+
+    init_pair(1, P.cstate, COLOR_BLACK); // green text on black background
     init_pair(2, COLOR_WHITE, COLOR_BLACK);
     init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
     init_pair(4, COLOR_CYAN, COLOR_BLACK);
-    attron(COLOR_PAIR(3));                  // apply color's configuration
+    attron(COLOR_PAIR(3)); // apply color's configuration
 
-    box(stdscr, 0, 0);                      // draw a box in the screen
-    attron(COLOR_PAIR(4)); 
+    box(stdscr, 0, 0); // draw a box in the screen
+    attron(COLOR_PAIR(4));
 
     x = 1;
     y = 1;
-    move_c(y, x);                             // set cursor's position
+    move_c(y, x); // set cursor's position
 
     print(P.name);
-    attron(COLOR_PAIR(1)); 
+    attron(COLOR_PAIR(1));
     refresh_s();
-    keypad(stdscr, 1);                      // activate all keys
-    cbreak();                               // instant push
-    refresh_s();                              // update window's info
+    keypad(stdscr, 1); // activate all keys
+    cbreak();          // instant push
+    refresh_s();       // update window's info
 
-    x = dim_x/2;
-    y = dim_y/2;
+    x = dim_x / 2;
+    y = dim_y / 2;
     move(y, x);
 
-    curs_set(0);                            // remove cursor
+    curs_set(0); // remove cursor
     print("^");
 
     while (1)
@@ -129,8 +129,8 @@ void start()
             break;
         }
     }
-    
-    if(O.mstate)
+
+    if (O.mstate)
     {
         exit_vlc();
         init_music();
@@ -139,7 +139,7 @@ void start()
 
     clear_s();
     echo();
-    curs_set(1); 
+    curs_set(1);
     keypad(stdscr, 0);
     refresh();
 

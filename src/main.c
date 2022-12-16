@@ -17,36 +17,35 @@ char g_music[100];
 int main(int argc, char *argv[])
 {
     cli(argc, argv);
-    
+
     unsigned short int select = 5;
-    unsigned short int gst; //selector, game st
+    unsigned short int gst; // selector, game st
 
     init_option(&O);
     init_dir();
     gst = LoadOptions(&O);
 
-    if(gst)
-    lang_option(&O);
+    if (gst)
+        lang_option(&O);
 
     start_s();
 
     do
     {
-        clear_s();    // clear terminal
+        clear_s(); // clear terminal
         menu();
-        move_c(dim_x/2 - 8, dim_y/2 + 4);
+        move_c(dim_x / 2 - 8, dim_y / 2 + 4);
         print("> ");
         scan("%hu", &select);
-
 
         if (select == 1)
         {
             ngame(&P);
             SaveGame(&P);
-            
-            if(O.mstate)
-            exit_vlc();
-            
+
+            if (O.mstate)
+                exit_vlc();
+
             start();
             select = 5;
         }
@@ -56,9 +55,9 @@ int main(int argc, char *argv[])
 
             if (gst)
             {
-                if(O.mstate)
-                exit_vlc();
-            
+                if (O.mstate)
+                    exit_vlc();
+
                 start();
                 select = 5;
             }
@@ -88,7 +87,7 @@ int main(int argc, char *argv[])
         else
         {
 
-            move_c(dim_x/2 - 8, dim_y/2 + 4);
+            move_c(dim_x / 2 - 8, dim_y / 2 + 4);
             printf("Wrong selection, press enter to select again");
             setbuf(stdin, NULL);
             getchar();
