@@ -1,5 +1,6 @@
 #include "include/var.h"
 #include "include/function.h"
+#include "include/screen.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
@@ -151,7 +152,8 @@ unsigned short int LoadGame(PLAYER *P)
 
     if ((fPtr = fopen(dirl, "rb")) == NULL)
     {
-        printf("No data saved, press enter to continue\n");
+        move_c(dim_x/2 - 8, dim_y/2 + 4);
+        print("No data saved, press enter to continue\n");
         setbuf(stdin, NULL);
         getchar();
         return 0;

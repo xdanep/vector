@@ -22,8 +22,9 @@ Below you can find compiling commands.
 
 # Screenshots:
 
-<br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Vector-main-menu.png"/> <br>
-<br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Vector-game.png"/> <br>
+<br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Charging.png"/> <br>
+<br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Main-menu.png"/> <br>
+<br> <img src="https://github.com/xdanep/vector/blob/main/screenshots/Game.png"/> <br>
 
 # Dependencies:
 
