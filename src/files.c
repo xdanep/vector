@@ -28,7 +28,8 @@ void init_dir()
     }
 
     strcpy(user, getlogin());
-    if (strlen(user) < 75)
+
+    if (strlen(user) < 65)
         strcat(dir, user);
     else
     {
@@ -38,8 +39,8 @@ void init_dir()
     }
 
     free(user);
-
-    strcat(dir, "/.vector/");
+    strcat(dir,"/.config/");
+    strcat(dir, "vector/");
 
     if (mkdir(dir, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game files folder
     {

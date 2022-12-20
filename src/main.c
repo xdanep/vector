@@ -97,7 +97,6 @@ int main(int argc, char *argv[])
 
         else
         {
-
             move_c(dim_x / 2 - 8, dim_y / 2 + 4);
             sprint("Wrong selection, press enter to select again");
             setbuf(stdin, NULL);
