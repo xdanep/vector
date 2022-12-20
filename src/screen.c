@@ -51,11 +51,18 @@ void clear_s()
     clear();
 }
 
-void print(const char *string)
+void print(const char *type, void *var)
 {
-    printw(string);
+    printw(type, var);
     refresh();
 }
+
+void sprint(const char *string)
+{
+    printw("%s",string);
+    refresh();
+}
+
 
 void scan(const char *type, void *var)
 {

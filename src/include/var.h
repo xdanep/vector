@@ -53,8 +53,8 @@ extern OPTION O;
 extern VERSION V;
 extern char dir[100];
 extern char dir2[100];
-extern char ini_music[100];
-extern char g_music[100];
+// extern char ini_music[100];
+// extern char g_music[100];
 extern int dim_x, dim_y;
 
 #endif // HEADER_LIBRARY

@@ -36,15 +36,15 @@ void lang_option(OPTION *O)
 void menu() // main menu
 {
     move_c(dim_x / 2 - 8, dim_y / 2 - 2);
-    print("1. Start new game\n");
+    sprint("1. Start new game\n");
     move_c(dim_x / 2 - 8, dim_y / 2 - 1);
-    print("2. Load game\n");
+    sprint("2. Load game\n");
     move_c(dim_x / 2 - 8, dim_y / 2);
-    print("3. Options\n");
+    sprint("3. Options\n");
     move_c(dim_x / 2 - 8, dim_y / 2 + 1);
-    print("4. Controls\n");
+    sprint("4. Controls\n");
     move_c(dim_x / 2 - 8, dim_y / 2 + 2);
-    print("0. Exit\n\n");
+    sprint("0. Exit\n\n");
 }
 
 void setmusic(OPTION *O)
@@ -55,13 +55,13 @@ void setmusic(OPTION *O)
 
     move_c(0, dim_y / 2 - 2);
     if (O->mstate == OFF)
-        print("Music OFF\n");
+        sprint("Music OFF\n");
     else
-        print("Music ON\n");
+        sprint("Music ON\n");
 
-    print("1. Change\n");
-    print("0. Exit\n\n");
-    print("> ");
+    sprint("1. Change\n");
+    sprint("0. Exit\n\n");
+    sprint("> ");
     scan("%hu", &sel);
 
     if (sel == 1)
@@ -70,14 +70,14 @@ void setmusic(OPTION *O)
         if (O->mstate == OFF)
         {
             O->mstate = (MUSIC)1;
-            print("Music On\n");
+            sprint("Music On\n");
             init_music();
             sleep(1);
         }
         else
         {
             O->mstate = (MUSIC)0;
-            print("Music OFF\n");
+            sprint("Music OFF\n");
             exit_vlc();
         }
     }
@@ -87,7 +87,7 @@ void setmusic(OPTION *O)
     else
     {
         move_c(0, dim_y / 2 + 2);
-        print("Wrong selection, press enter to go back");
+        sprint("Wrong selection, press enter to go back");
         setbuf(stdin, NULL);
         getchar();
     }
@@ -102,13 +102,13 @@ void setlang(OPTION *O)
     move_c(0, dim_y / 2 - 2);
 
     if (O->lstate == ENGLISH)
-        print("Set: English\n");
+        sprint("Set: English\n");
 
     else
-        print("Set: Spanish\n");
+        sprint("Set: Spanish\n");
 
-    print("1. Change\n0. Exit\n\n");
-    print("> ");
+    sprint("1. Change\n0. Exit\n\n");
+    sprint("> ");
     scan("%hu", &sel);
 
     if (sel == 1)
@@ -118,12 +118,12 @@ void setlang(OPTION *O)
         if (O->lstate == ENGLISH)
         {
             O->lstate = (LANGUAGE)1;
-            print("Selected: Spanish\n");
+            sprint("Selected: Spanish\n");
         }
         else
         {
             O->lstate = (LANGUAGE)0;
-            print("Selected: English\n");
+            sprint("Selected: English\n");
         }
     }
     else if (sel == 0)
@@ -132,7 +132,7 @@ void setlang(OPTION *O)
     else
     {
         move_c(0, dim_y / 2 + 2);
-        print("Wrong selection, press enter to go back");
+        sprint("Wrong selection, press enter to go back");
         setbuf(stdin, NULL);
         getchar();
     }
@@ -144,8 +144,8 @@ void options()
 
     clear_s();
     move_c(0, dim_y / 2 - 2);
-    print("1. Music\n2. Language\n0. Exit\n\n");
-    print("> ");
+    sprint("1. Music\n2. Language\n0. Exit\n\n");
+    sprint("> ");
     scan("%hu", &sel);
 
     if (sel == 1)
@@ -160,7 +160,7 @@ void options()
     else
     {
         move_c(0, dim_y / 2 + 2);
-        print("Wrong selection, press enter to select again");
+        sprint("Wrong selection, press enter to select again");
         setbuf(stdin, NULL);
         getchar();
     }
@@ -171,10 +171,10 @@ void controls()
 {
     clear_s();
     move_c(0, dim_y / 2 - 2);
-    print("Controls:\n");
-    print("ESC to exit game.\n");
-    print("Use arrow keys to move your character\n");
-    print("\nPress return to go back");
+    sprint("Controls:\n");
+    sprint("ESC to exit game.\n");
+    sprint("Use arrow keys to move your character\n");
+    sprint("\nPress return to go back");
     setbuf(stdin, NULL);
     getchar();
 }

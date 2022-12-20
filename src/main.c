@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "include/var.h"
 #include "include/function.h"
 #include "include/screen.h"
@@ -11,15 +12,14 @@ OPTION O;
 char dir[100];
 char dir2[100];
 
-char ini_music[100];
-char g_music[100];
+// char ini_music[100];
+// char g_music[100];
 
 int main(int argc, char *argv[])
 {
     cli(argc, argv);
 
-    unsigned short int select = 5;
-    unsigned short int gst; // selector, game st
+    unsigned short int select = 5, gst; // selector, game st
 
     init_option(&O);
     init_dir();
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         clear_s(); // clear terminal
         menu();
         move_c(dim_x / 2 - 8, dim_y / 2 + 4);
-        print("> ");
+        sprint("> ");
         scan("%hu", &select);
 
         if (select == 1)
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
         {
 
             move_c(dim_x / 2 - 8, dim_y / 2 + 4);
-            printf("Wrong selection, press enter to select again");
+            sprint("Wrong selection, press enter to select again");
             setbuf(stdin, NULL);
             getchar();
         }

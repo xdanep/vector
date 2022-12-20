@@ -1,12 +1,13 @@
-#include "include/var.h"
-#include "include/function.h"
-#include "include/screen.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+
+#include "include/var.h"
+#include "include/function.h"
+#include "include/screen.h"
 
 void init_dir()
 {
@@ -27,7 +28,14 @@ void init_dir()
     }
 
     strcpy(user, getlogin());
-    strcat(dir, user);
+    if(strlen(user) < 75)
+        strcat(dir, user);
+    else
+    {
+        printf("Invalid user, for security reasons the program \
+        will exit");
+        exit(EXIT_FAILURE);
+    }
 
     free(user);
 
@@ -41,24 +49,24 @@ void init_dir()
             getchar();
         }
     }
+    
+    // strcpy(dir2, dir);
+    // strcat(dir2, "music/");
 
-    strcpy(dir2, dir);
-    strcat(dir2, "music/");
+    // if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game music folder
+    // {
+    //     if (errno != EEXIST)
+    //     {
+    //         printf("Error: %s, enter to exit\n", strerror(errno));
+    //         getchar();
+    //     }
+    // }
 
-    if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game music folder
-    {
-        if (errno != EEXIST)
-        {
-            printf("Error: %s, enter to exit\n", strerror(errno));
-            getchar();
-        }
-    }
+    // strcpy(ini_music, dir2);
+    // strcat(ini_music, "cubez0r.xm");
 
-    strcpy(ini_music, dir2);
-    strcat(ini_music, "cubez0r.xm");
-
-    strcpy(g_music, dir2);
-    strcat(g_music, "SelfControl.mp3");
+    // strcpy(g_music, dir2);
+    // strcat(g_music, "SelfControl.mp3");
 
     strcpy(dir2, dir);
     strcat(dir2, "conf/");
@@ -148,7 +156,7 @@ unsigned short int LoadGame(PLAYER *P)
     if ((fPtr = fopen(dirl, "rb")) == NULL)
     {
         move_c(dim_x / 2 - 8, dim_y / 2 + 4);
-        print("No data saved, press enter to continue\n");
+        sprint("No data saved, press enter to continue\n");
         setbuf(stdin, NULL);
         getchar();
         return 0;

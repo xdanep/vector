@@ -16,7 +16,6 @@ OBJS= \
 	main.o \
 	menu.o \
 	cli.o \
-	version.o \
 	vlc.o \
 	screen.o
 
@@ -38,10 +37,12 @@ install:
 	@sudo cp vector /usr/bin/ -r
 	@sudo cp ../misc/logo.png /usr/share/icons/ -r
 	@sudo cp ../misc/vector.desktop /usr/share/applications/ -r
-	@cp ../songs/ ~/.vector/music/ -r
+	@sudo mkdir -p /opt/vector/
+	@sudo cp ../music/ /opt/vector/ -r
 
 uninstall:
 	@sudo rm /usr/bin/vector
 	@sudo rm /usr/share/icons/logo.png
 	@sudo rm /usr/share/applications/vector.desktop
-	@sudo rm ~/.vector -r
+	@sudo rm ~/.vector/ -r
+	@sudo rm /opt/vector/ -r

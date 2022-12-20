@@ -9,8 +9,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <vlc/vlc.h>
+
 #include "include/function.h"
-#include "include/var.h"
+
+#define SONG1 "/opt/vector/music/cubez0r.xm"
+#define SONG2 "/opt/vector/music/SelfControl.mp3"
+
+libvlc_instance_t *inst;
+libvlc_media_player_t *mp;
+libvlc_media_t *m;
+const char * const ini_music = SONG1;
+const char * const g_music = SONG2;
 
 libvlc_instance_t *inst;
 libvlc_media_player_t *mp;
@@ -29,7 +38,7 @@ void init_vlc(void)
 }
 
 void init_music(void)
-{
+{  
     // load the vlc engine
     inst = libvlc_new(0, NULL);
 
@@ -40,15 +49,16 @@ void init_music(void)
 }
 
 void game_music(void)
-{
+{  
     // load the vlc engine
     inst = libvlc_new(0, NULL);
 
     // create a new item
     m = libvlc_media_new_path(inst, g_music);
-
+    
     init_vlc();
 }
+
 
 void exit_vlc(void)
 {
@@ -57,6 +67,6 @@ void exit_vlc(void)
 
     // free the media_player
     libvlc_media_player_release(mp);
-
+    
     libvlc_release(inst);
 }

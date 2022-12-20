@@ -1,10 +1,11 @@
-#include "include/var.h"
-#include "include/function.h"
-#include "include/screen.h"
 #include <ncurses.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "include/var.h"
+#include "include/function.h"
+#include "include/screen.h"
 
 void ngame(PLAYER *P)
 {
@@ -12,13 +13,13 @@ void ngame(PLAYER *P)
 
     clear_s();
     move_c(0, dim_y / 2 - 2);
-    print("Nickname (Max 20 characters): ");
+    sprint("Nickname (Max 20 characters): ");
     setbuf(stdin, NULL);   // clear stdin buffer
     getstr(P->name);       // introduce player's name
     strtok(P->name, "\n"); // clear \n of fgets
-    print("Choose your color:\n");
-    print("1. Yellow\n2. Green\n3. Blue\n4. Red\n\n");
-    print("> ");
+    sprint("Choose your color:\n");
+    sprint("1. Yellow\n2. Green\n3. Blue\n4. Red\n\n");
+    sprint("> ");
     scan("%hu", &sel); // introduce player's color
 
     if (sel == 1)
@@ -35,7 +36,7 @@ void ngame(PLAYER *P)
 
     else
     {
-        print("Default: Green");
+        sprint("Default: Green");
         P->cstate = (COLOR)2;
     }
 }
@@ -63,7 +64,7 @@ void start()
     y = 1;
     move_c(y, x); // set cursor's position
 
-    print(P.name);
+    sprint(P.name);
     attron(COLOR_PAIR(1));
     refresh_s();
     keypad(stdscr, 1); // activate all keys
@@ -75,7 +76,7 @@ void start()
     move(y, x);
 
     curs_set(0); // remove cursor
-    print("^");
+    sprint("^");
 
     while (1)
     {
