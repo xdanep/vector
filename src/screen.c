@@ -1,11 +1,8 @@
-#include "include/var.h"
-#include "include/function.h"
-#include "include/screen.h"
 #include <ncurses.h>
-#include <unistd.h>
 #include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
+#include <unistd.h>
+
+#include "include/screen.h"
 
 int dim_x, dim_y; // windows dimensions
 
@@ -62,7 +59,6 @@ void sprint(const char *string)
     printw("%s",string);
     refresh();
 }
-
 
 void scan(const char *type, void *var)
 {

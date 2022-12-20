@@ -1,9 +1,10 @@
-#include "include/var.h"
-#include "include/function.h"
-#include "include/screen.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
+#include "include/menu.h"
+#include "include/screen.h"
+#include "include/vlc.h"
 
 void init_option(OPTION *O)
 {

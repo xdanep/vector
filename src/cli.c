@@ -10,36 +10,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "include/var.h"
-#include "include/function.h"
+#include"include/cli.h"
 
-// DEFINE FOR CLI ARGUMENTS
-#define PROJNAME "Vector"
-#define DISTVERSION "0.3.2"
-#define BUILDVERSION 1
-#define RELSTATUS "release"
-#define BUILDPTFORM "x86_64-pc-linux-gnu"
+/* READ ONLY VAR */
+const char *const vector_copyright = ("Copyright (C) 2022 Agustín Gutíerrez, Xdanep.");
+const char *const vector_license = ("License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n");
 
-// DEFINE CLI ARGUMENTS
-#define ARGV1 "--version"
-#define ARGV2 "--help"
-#define ARGV3 "-v"
-#define ARGV4 "-h"
-
-/* READ ONLY VAR */ 
-const char * const vector_copyright = ("Copyright (C) 2022 Agustín Gutíerrez, Xdanep.");
-const char * const vector_license = ("License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n");
-
-const char * const tt = PROJNAME;
-const char * const dist_version = DISTVERSION;
+const char *const tt = PROJNAME;
+const char *const dist_version = DISTVERSION;
 const int build_version = BUILDVERSION;
-const char * const release_status = RELSTATUS;
-const char * const build_platform = BUILDPTFORM;
+const char *const release_status = RELSTATUS;
+const char *const build_platform = BUILDPTFORM;
 
-const char * const argv_version = ARGV1;
-const char * const argv_help = ARGV2;
-const char * const argv_ver = ARGV3;
-const char * const argv_hel = ARGV4;
+const char *const argv_version = ARGV1;
+const char *const argv_help = ARGV2;
+const char *const argv_ver = ARGV3;
+const char *const argv_hel = ARGV4;
 
 /* PRINT (xxxxx, version x.x.x(x)-xxxxx (xxxxxxxxxxx)) */
 void show_vector_version (void)

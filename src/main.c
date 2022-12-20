@@ -1,19 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-#include "include/var.h"
-#include "include/function.h"
+#include "include/cli.h"
+#include "include/files.h"
+#include "include/game.h"
+#include "include/main.h"
+#include "include/menu.h"
 #include "include/screen.h"
+#include "include/vlc.h"
 
 PLAYER P;
 OPTION O;
-
-char dir[100];
-char dir2[100];
-
-// char ini_music[100];
-// char g_music[100];
 
 int main(int argc, char *argv[])
 {

@@ -31,11 +31,11 @@ Below you can find compiling commands.
 
 # Dependencies:
 
-### -`ncurses`
+### -`libncurses`
 
 ### -`gcc`
 
-### -`vlc`
+### -`libvlc`
 
 # To compile:
 

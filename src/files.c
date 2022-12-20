@@ -5,9 +5,12 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 
-#include "include/var.h"
-#include "include/function.h"
 #include "include/screen.h"
+#include "include/files.h"
+#include "include/vlc.h"
+
+char dir[100];
+char dir2[100];
 
 void init_dir()
 {
@@ -49,24 +52,6 @@ void init_dir()
             getchar();
         }
     }
-    
-    // strcpy(dir2, dir);
-    // strcat(dir2, "music/");
-
-    // if (mkdir(dir2, S_IRWXU | S_IRWXG | S_IRWXO) == -1) // game music folder
-    // {
-    //     if (errno != EEXIST)
-    //     {
-    //         printf("Error: %s, enter to exit\n", strerror(errno));
-    //         getchar();
-    //     }
-    // }
-
-    // strcpy(ini_music, dir2);
-    // strcat(ini_music, "cubez0r.xm");
-
-    // strcpy(g_music, dir2);
-    // strcat(g_music, "SelfControl.mp3");
 
     strcpy(dir2, dir);
     strcat(dir2, "conf/");

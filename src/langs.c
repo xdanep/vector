@@ -8,8 +8,7 @@
 #include <ncurses.h> // se incluye la libreria ncurses.h
 #include <string.h>
 
-#include "include/var.h"      // se incluye el archivo de encabezado var.h
-#include "include/function.h" // se incluye el archivo de encabezado function.h
+#include "include/main.h"      // se incluye el archivo de encabezado main.h
 #include "include/langs.h"
 
 lan1 lang_en;

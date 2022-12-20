@@ -8,16 +8,16 @@
 
 CC=gcc
 CLIBS=-lncurses -lvlc
-CFLAGS=-Wall -Wextra -O2 -g -std=gnu99
+CFLAGS=-Wall -Wextra -O2 -g -std=gnu17
 
 OBJS= \
+	cli.o \
 	files.o \
 	game.o \
 	main.o \
 	menu.o \
-	cli.o \
-	vlc.o \
-	screen.o
+	screen.o \
+	vlc.o 
 
 default: all
 

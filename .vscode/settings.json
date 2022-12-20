@@ -3,7 +3,7 @@
         "unistd.h": "c",
         "stdio.h": "c",
         "function.h": "c",
-        "var.h": "c",
+        "main.h": "c",
         "string.h": "c"
     },
     "editor.fontFamily": "Consolas,'Courier New', monospace",

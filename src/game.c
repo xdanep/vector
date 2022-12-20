@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "include/var.h"
-#include "include/function.h"
+#include "include/game.h"
+#include "include/vlc.h"
 #include "include/screen.h"
 
 void ngame(PLAYER *P)
