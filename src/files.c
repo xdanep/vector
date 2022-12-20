@@ -9,9 +9,6 @@
 #include "include/files.h"
 #include "include/vlc.h"
 
-char dir[100];
-char dir2[100];
-
 void init_dir()
 {
     errno = 0;

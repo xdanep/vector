@@ -12,6 +12,9 @@
 PLAYER P;
 OPTION O;
 
+char dir[100];
+char dir2[100];
+
 int main(int argc, char *argv[])
 {
     cli(argc, argv);
@@ -24,6 +27,14 @@ int main(int argc, char *argv[])
 
     if (gst)
         lang_option(&O);
+
+    SaveOptions(&O);
+
+    if(O.mstate)
+    {
+        init_music();
+        sleep(1);
+    }
 
     start_s();
 

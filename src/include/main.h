@@ -53,4 +53,7 @@ typedef struct version
 extern PLAYER P;
 extern OPTION O;
 
+extern char dir[100];
+extern char dir2[100];
+
 #endif // HEADER_LIBRARY

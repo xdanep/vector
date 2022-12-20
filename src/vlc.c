@@ -13,9 +13,6 @@ libvlc_instance_t *inst;
 libvlc_media_player_t *mp;
 libvlc_media_t *m;
 
-const char *const ini_music = SONG1;
-const char *const g_music = SONG2;
-
 void init_vlc(void)
 {
     // create a media play playing environment
@@ -34,7 +31,7 @@ void init_music(void)
     inst = libvlc_new(0, NULL);
 
     // create a new item
-    m = libvlc_media_new_path(inst, ini_music);
+    m = libvlc_media_new_path(inst, SONG1);
 
     init_vlc();
 }
@@ -45,7 +42,7 @@ void game_music(void)
     inst = libvlc_new(0, NULL);
 
     // create a new item
-    m = libvlc_media_new_path(inst, g_music);
+    m = libvlc_media_new_path(inst, SONG2);
 
     init_vlc();
 }
