@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "include/cli.h"
 #include "include/files.h"
@@ -26,15 +27,17 @@ int main(int argc, char *argv[])
     gst = LoadOptions(&O);
 
     if (gst)
+    {
         lang_option(&O);
 
-    SaveOptions(&O);
-
-    if(O.mstate)
-    {
-        init_music();
-        sleep(1);
+        if (O.mstate)
+        {
+            init_music();
+            sleep(1);
+        }
     }
+
+    SaveOptions(&O);
 
     start_s();
 

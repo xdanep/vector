@@ -28,7 +28,7 @@ void init_dir()
     }
 
     strcpy(user, getlogin());
-    if(strlen(user) < 75)
+    if (strlen(user) < 75)
         strcat(dir, user);
     else
     {

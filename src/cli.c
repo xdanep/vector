@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include"include/cli.h"
+#include "include/cli.h"
 
 /* READ ONLY VAR */
 const char *const vector_copyright = ("Copyright (C) 2022 Agustín Gutíerrez, Xdanep.");
@@ -28,35 +28,35 @@ const char *const argv_ver = ARGV3;
 const char *const argv_hel = ARGV4;
 
 /* PRINT (xxxxx, version x.x.x(x)-xxxxx (xxxxxxxxxxx)) */
-void show_vector_version (void)
+void show_vector_version(void)
 {
-      printf ("%s, version %s(%d)-%s (%s)\n", tt,  dist_version, build_version, release_status, build_platform);
+    printf("%s, version %s(%d)-%s (%s)\n", tt, dist_version, build_version, release_status, build_platform);
 }
 
 /* PRINT EXTRA INFO */
-void extended (void)
+void extended(void)
 {
-      printf ("%s\n", (vector_copyright));
-      printf ("%s\n", (vector_license));
-      printf ("%s\n", ("This is free software; you are free to change and redistribute it."));
-      printf ("%s\n", ("There is NO WARRANTY, to the extent permitted by law."));
+    printf("%s\n", (vector_copyright));
+    printf("%s\n", (vector_license));
+    printf("%s\n", ("This is free software; you are free to change and redistribute it."));
+    printf("%s\n", ("There is NO WARRANTY, to the extent permitted by law."));
 }
 
 /* MAIN CODE */
-void cli (int argc, char *argv[])
+void cli(int argc, char *argv[])
 {
     if (argc == 2)
-    {   /* if (argument cli 1) == argv_help */
+    { /* if (argument cli 1) == argv_help */
         if (!strcmp(argv[1], argv_help) || !strcmp(argv[1], argv_hel))
-        {                              /* || if (argument cli 1) == argv_hel... */
-            printf ("--version\t\t\tProgram version\n");
-            exit (EXIT_SUCCESS);
+        { /* || if (argument cli 1) == argv_hel... */
+            printf("--version\t\t\tProgram version\n");
+            exit(EXIT_SUCCESS);
         } /* else if (argument cli 1) == argv_version */
         else if (!strcmp(argv[1], argv_version) || !strcmp(argv[1], argv_ver))
-        {                                      /* || else if (argument cli 1) == argv_ver... */
+        { /* || else if (argument cli 1) == argv_ver... */
             show_vector_version();
             extended();
-            exit (EXIT_SUCCESS);
+            exit(EXIT_SUCCESS);
         }
     }
 }

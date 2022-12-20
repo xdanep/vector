@@ -23,8 +23,8 @@ void start_s()
     }
 
     init_pair(1, COLOR_WHITE, COLOR_BLACK); // set white text on black background
-    attron(COLOR_PAIR(1)); // apply color's configuration
-    box(stdscr, 0, 0);     // draw a box in the screen
+    attron(COLOR_PAIR(1));                  // apply color's configuration
+    box(stdscr, 0, 0);                      // draw a box in the screen
     refresh();
 
     x = dim_x / 2 - 2;
@@ -56,7 +56,7 @@ void print(const char *type, void *var)
 
 void sprint(const char *string)
 {
-    printw("%s",string);
+    printw("%s", string);
     refresh();
 }
 
