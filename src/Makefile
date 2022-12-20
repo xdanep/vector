@@ -44,5 +44,5 @@ uninstall:
 	@sudo rm /usr/bin/vector
 	@sudo rm /usr/share/icons/logo.png
 	@sudo rm /usr/share/applications/vector.desktop
-	@sudo rm ~/.vector/ -r
+	@sudo rm ~/.local/vector/ -r
 	@sudo rm /opt/vector/ -r
