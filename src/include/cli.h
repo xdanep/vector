@@ -13,4 +13,4 @@
 
 void show_vector_version(void);
 void extended(void);
-void cli(int argc, char *argv[]); // CLI arguments
+void cli(int argc, char *argv[]);

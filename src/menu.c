@@ -6,12 +6,14 @@
 #include "include/screen.h"
 #include "include/vlc.h"
 
+// Initialize OPTION structure
 void init_option(OPTION *O)
 {
     O->lstate = (LANGUAGE)0;
     O->mstate = (MUSIC)1;
 }
 
+// Get language options
 void lang_option(OPTION *O)
 {
     unsigned short int sel = 3;
@@ -34,7 +36,8 @@ void lang_option(OPTION *O)
     }
 }
 
-void menu() // main menu
+// Display main menu
+void menu()
 {
     move_c(dim_x / 2 - 8, dim_y / 2 - 2);
     sprint("1. Start new game\n");
@@ -48,6 +51,7 @@ void menu() // main menu
     sprint("0. Exit\n\n");
 }
 
+// Music options
 void setmusic(OPTION *O)
 {
     unsigned short int sel;
@@ -94,6 +98,7 @@ void setmusic(OPTION *O)
     }
 }
 
+// Language options
 void setlang(OPTION *O)
 {
     unsigned short int sel;
@@ -139,6 +144,7 @@ void setlang(OPTION *O)
     }
 }
 
+// Options menu
 void options()
 {
     static unsigned short int sel;
@@ -168,6 +174,7 @@ void options()
     return options();
 }
 
+// Controls menu
 void controls()
 {
     clear_s();

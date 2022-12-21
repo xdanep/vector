@@ -6,6 +6,7 @@
 
 int dim_x, dim_y; // windows dimensions
 
+// Start ncurses
 void start_s()
 {
     int x = 10, y = 10;
@@ -37,39 +38,46 @@ void start_s()
     curs_set(1);
 }
 
+// Move pointer
 void move_c(int x, int y)
 {
     move(y, x);
     refresh();
 }
 
+// Clear screen
 void clear_s()
 {
     clear();
 }
 
+// Print in stdout
 void print(const char *type, void *var)
 {
     printw(type, var);
     refresh();
 }
 
+// Print a string in stdout
 void sprint(const char *string)
 {
     printw("%s", string);
     refresh();
 }
 
+// Scan from stdin
 void scan(const char *type, void *var)
 {
     scanw(type, var);
 }
 
+// Refresh window
 void refresh_s()
 {
     refresh();
 }
 
+// Exit ncurses
 void exit_s()
 {
     refresh();

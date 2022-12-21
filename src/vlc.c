@@ -13,6 +13,7 @@ libvlc_instance_t *inst;
 libvlc_media_player_t *mp;
 libvlc_media_t *m;
 
+// Initialize VLC
 void init_vlc(void)
 {
     // create a media play playing environment
@@ -25,6 +26,7 @@ void init_vlc(void)
     libvlc_media_player_play(mp);
 }
 
+// Intialize main music
 void init_music(void)
 {
     // load the vlc engine
@@ -36,6 +38,7 @@ void init_music(void)
     init_vlc();
 }
 
+// Initialize game music
 void game_music(void)
 {
     // load the vlc engine
@@ -47,6 +50,7 @@ void game_music(void)
     init_vlc();
 }
 
+// Exit VLC
 void exit_vlc(void)
 {
     // stop playing

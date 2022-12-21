@@ -7,6 +7,7 @@
 #include "include/vlc.h"
 #include "include/screen.h"
 
+// Configure new game
 void ngame(PLAYER *P)
 {
     unsigned short int sel;
@@ -41,6 +42,7 @@ void ngame(PLAYER *P)
     }
 }
 
+// Start game
 void start()
 {
     int x = 10, y = 10;
