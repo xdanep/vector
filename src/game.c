@@ -46,11 +46,11 @@ void ngame(PLAYER *P)
 }
 
 // Start game
-void start()
+long int start()
 {
     int x = 10, y = 10;
     int key;
-    int score = 0;
+    long int score = 0;
 
     clear_s(); // clear screen
 
@@ -206,7 +206,18 @@ void start()
         // increment score
         move(1, dim_x-6); // set cursor position
         score++;
-        printw("%d", score);
+        
+        if (score < 0)
+        {
+            move(dim_y / 2, dim_x / 2 - 4);
+            printw("GAME OVER");
+            refresh();
+
+            sleep(2);
+            break;
+        }
+
+        printw("%ld", score);
     }
 
     if (O.mstate)
@@ -222,5 +233,8 @@ void start()
     keypad(stdscr, 0);
     refresh();
 
-    return;
+    if(score < 0)
+    score = 0;
+
+    return score;
 }

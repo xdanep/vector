@@ -105,7 +105,7 @@ unsigned short int LoadOptions(OPTION *O)
 void SaveOptions(OPTION *O)
 {
     FILE *fPtr;
-    char dirl[200];
+    char dirl[100];
 
     strcpy(dirl, dir);
     strcat(dirl, "options.bin");
@@ -127,7 +127,7 @@ void SaveOptions(OPTION *O)
 void SaveGame(PLAYER *P)
 {
     FILE *fPtr;
-    char dirl[200];
+    char dirl[100];
 
     strcpy(dirl, dir);
     strcat(dirl, "save.bin");
@@ -149,7 +149,7 @@ void SaveGame(PLAYER *P)
 unsigned short int LoadGame(PLAYER *P)
 {
     FILE *fPtr;
-    char dirl[200];
+    char dirl[100];
 
     strcpy(dirl, dir);
     strcat(dirl, "save.bin");
@@ -171,4 +171,23 @@ unsigned short int LoadGame(PLAYER *P)
     fclose(fPtr);                           // closing save file
 
     return 1;
+}
+
+void saveScore(PLAYER P, int score)
+{
+    FILE *fPtr;
+    char dirl[100];
+
+    strcpy(dirl, dir);
+    strcat(dirl, "score.txt");
+
+    // loading game
+    if ((fPtr = fopen(dirl, "a")) == NULL) // opening save file in appending mode
+    {
+        return;
+    }
+    else
+        fprintf(fPtr, "%s score: %d\n", P.name, score);  // reading PLAYER structure
+
+    fclose(fPtr);                           // closing save file
 }

@@ -19,6 +19,7 @@ char dir[100];
 int main(int argc, char *argv[])
 {
     unsigned short int select = 5, gst; // selector, game state
+    long int score;
 
     cmd(argc, argv);
 
@@ -62,7 +63,9 @@ int main(int argc, char *argv[])
             if (O.mstate)
                 exit_vlc();
 
-            start();
+            score = start();
+
+            saveScore(P, score);
 
             select = 5;
         }
@@ -75,7 +78,9 @@ int main(int argc, char *argv[])
                 if (O.mstate)
                     exit_vlc();
 
-                start();
+                score = start();
+
+                saveScore(P, score);
 
                 select = 5;
             }
