@@ -88,6 +88,8 @@ void start()
     curs_set(0); // remove cursor
     sprint("^");
 
+    set_escdelay(0);
+
     while (1)
     {
         noecho(); // no writing echo in terminal
@@ -163,7 +165,6 @@ void start()
     {
         exit_vlc(); //closing vlc
         init_music(); // starting main menu music
-        sleep(1);
     }
     // restoring default screen options
     clear_s();

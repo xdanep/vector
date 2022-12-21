@@ -35,7 +35,6 @@ int main(int argc, char *argv[])
         if (O.mstate)
         {
             init_music();
-            sleep(1);
         }
     }
 

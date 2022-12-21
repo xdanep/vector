@@ -96,7 +96,6 @@ unsigned short int LoadOptions(OPTION *O)
     if (O->mstate)                          // music initializator
     {
         init_music();
-        sleep(1);
     }
 
     return 0;

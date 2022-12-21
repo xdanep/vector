@@ -90,7 +90,6 @@ void setmusic(OPTION *O)
             sprint("Music On\n");
 
             init_music();
-            sleep(1);
         }
 
         else
