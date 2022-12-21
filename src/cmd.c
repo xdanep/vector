@@ -47,18 +47,16 @@ void cmd(int argc, char *argv[])
 {
     if (argc == 2)
     { 
-        /* if (argument cli 1) == argv_help */
-        if (!strcmp(argv[1], argv_help) || !strcmp(argv[1], argv_hel))
+        /* if (argument cmd 1) == argv_help */
+        if (!strcmp(argv[1], argv_help) || !strcmp(argv[1], argv_hel)) // || if (argument cmd 1) == argv_hel...
         { 
-            /* || if (argument cli 1) == argv_hel... */
             printf("--version\t\t\tProgram version\n");
             exit(EXIT_SUCCESS);
         } 
         
-        /* else if (argument cli 1) == argv_version */
-        else if (!strcmp(argv[1], argv_version) || !strcmp(argv[1], argv_ver))
+        /* else if (argument cmd 1) == argv_version */
+        else if (!strcmp(argv[1], argv_version) || !strcmp(argv[1], argv_ver)) // || if (argument cmd 1) == argv_hel...
         { 
-            /* || else if (argument cli 1) == argv_ver... */
             show_vector_version();
             extended();
             exit(EXIT_SUCCESS);
