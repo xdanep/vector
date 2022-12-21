@@ -93,6 +93,13 @@ void start()
         noecho(); // no writing echo in terminal
         key = getch(); // captching key writed
 
+        // exiting game
+        if (key == 27)
+        {
+            attron(COLOR_PAIR(2)); // white text on black background
+            break;
+        }
+
         // moving up
         if (key == KEY_UP) 
         {
@@ -150,13 +157,6 @@ void start()
         }
 
         refresh_s();
-
-        // exiting game
-        if (key == 27)
-        {
-            attron(COLOR_PAIR(2)); // white text on black background
-            break;
-        }
     }
 
     if (O.mstate)

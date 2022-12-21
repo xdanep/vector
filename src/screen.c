@@ -41,7 +41,7 @@ void start_s()
     printw("VECTOR");
     refresh();
 
-    sleep(3);
+    sleep(2);
     curs_set(1); // insert cursor
 }
 
