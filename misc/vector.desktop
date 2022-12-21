@@ -5,6 +5,6 @@ Exec=/usr/bin/vector %F
 Icon=/usr/share/icons/logo.png
 Terminal=true
 Type=Application
-Version=0.3.4
+Version=0.4.0
 GenericName=game
 Categories=Game;

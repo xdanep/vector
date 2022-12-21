@@ -51,6 +51,5 @@ Below you can find compiling commands.
 
 # Future Features
 I want your help to continue the project, here's a list of features that I would like to add:
-- Enemies
 - Spanish support
 - GUI

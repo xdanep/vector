@@ -1,5 +1,6 @@
 #include <ncurses.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "include/gameplay.h"
 #include "include/screen.h"
@@ -122,22 +123,7 @@ void clean_score()
     printw(" ");
 }
 
-void init_enemy(ENEMY *E)
-{
-    int i, j;
-
-    while (1)
-    {
-        i = rand();
-
-        if (i > 1 && i < (dim_x - 2))
-            E->xv = i;
-
-        if (j > 2 && j < (dim_y - 2))
-            E->yv = j;
-    }
-}
-
+// Move enemy position
 void move_enemy(ENEMY *E, VECTOR *Pl)
 {
     int x, y;
@@ -161,7 +147,7 @@ void move_enemy(ENEMY *E, VECTOR *Pl)
     }
 
     // moving down
-    if (Pl->yv > E->yv)
+    else if (Pl->yv > E->yv)
     {
         y++;
         if (y == (dim_y - 2))
@@ -176,7 +162,7 @@ void move_enemy(ENEMY *E, VECTOR *Pl)
     }
 
     // moving left
-    if (Pl->xv < E->xv)
+    else if (Pl->xv < E->xv)
     {
         x--;
         if (x == 1)
@@ -191,7 +177,7 @@ void move_enemy(ENEMY *E, VECTOR *Pl)
     }
 
     // moving right
-    if (Pl->xv > E->xv)
+    else if (Pl->xv > E->xv)
     {
         x++;
         if (x == (dim_x - 2))
@@ -207,4 +193,41 @@ void move_enemy(ENEMY *E, VECTOR *Pl)
 
     E->xv = x;
     E->yv = y;
+}
+
+// Initialize bonus position
+void bonusp_p(int x[], int y[], int size)
+{
+    int i;
+
+    srand(time(0));
+    
+    for(i = 0; i < size; i++)
+    {
+        x[i] = rand() % (dim_x - 2);
+
+        if(x[i] < 3)
+        {
+            i--;
+            continue;
+        }
+    }
+
+    for(i = 0; i < size; i++)
+    {
+        y[i] = rand() % (dim_y - 2);
+
+        if(y[i] < 3)
+        {
+            i--;
+            continue;
+        }
+    }
+}
+
+// Print bonus in selected position
+void print_bonus(int x, int y)
+{
+    move(y, x);
+    printw("+");
 }

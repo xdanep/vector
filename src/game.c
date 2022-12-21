@@ -52,9 +52,12 @@ long int start()
     int x = 10, y = 10;
     int key;
     long int score = 0;
+    int xp[100], yp[100], i, ie = 5;
 
-    VECTOR*Pl;
-    ENEMY*E1;
+    VECTOR Pl;
+    ENEMY E1, E2;
+
+    bonusp_p(xp, yp, 100);
 
     clear_s(); // clear screen
 
@@ -86,30 +89,38 @@ long int start()
     refresh_s();       // refresh window
 
     // set cursor position
-    Pl->xv = dim_x / 2;
-    Pl->yv = dim_y / 2;
+    Pl.xv = dim_x / 2;
+    Pl.yv = dim_y / 2;
 
-    move(Pl->yv, Pl->xv);
+    move(Pl.yv, Pl.xv);
 
     curs_set(0); // remove cursor
 
     sprint("|");
 
-    move(Pl->yv - 1, Pl->xv);
+    move(Pl.yv - 1, Pl.xv);
     sprint("^");
+
+    E1.xv = 2;
+    E1.yv = dim_y / 2 - 1;
 
     set_escdelay(0.1);
 
+    noecho(); // no writing echo in terminal
+
     while (1)
     {
-        noecho(); // no writing echo in terminal
+        if(i == 99)
+        bonusp_p(xp, yp, 100);
 
         key = getch(); // captching key writed
 
-        E1->xv = 2;
-        E1->yv = dim_y / 2 - 1;
+        attron(COLOR_PAIR(4));
+        print_bonus(xp[i], yp[i]);
 
-        clean_vector(Pl->xv, Pl->yv);
+        clean_vector(Pl.xv, Pl.yv);
+
+        clean_vector(E1.xv, E1.yv);
 
         // exiting game
         if (key == 27)
@@ -118,8 +129,50 @@ long int start()
             break;
         }
 
-        move_vector(key, Pl, &score);
-        move_enemy(E1, Pl);
+        attron(COLOR_PAIR(1));
+        move_vector(key, &Pl, &score);
+
+        attron(COLOR_PAIR(2));
+        move_enemy(&E1, &Pl);
+
+        if (Pl.xv == xp[i] && Pl.yv == yp[i])
+        {
+            i++;
+            score += 100;
+
+            clean_vector(E1.xv, E1.yv);
+
+            if (ie < 95)
+                ie += 2;
+
+            else
+                ie-=70;
+
+            while(xp[i] - xp[ie] <= 15 && yp[i] - yp[ie] <= 15 && Pl.xv - xp[ie] <= 10 && Pl.yv - yp[ie] <= 10)
+            {
+                ie++;
+
+                if(ie == 99)
+                ie = 1;
+            }
+
+            E1.xv = xp[ie];
+            E1.yv = yp[ie];
+
+            attron(COLOR_PAIR(2));
+            move_enemy(&E1, &Pl);
+        }
+
+        if (E1.xv == Pl.xv && E1.yv == Pl.yv)
+        {
+            move(dim_y / 2, dim_x / 2 - 4);
+            printw("GAME OVER");
+            refresh();
+
+            sleep(2);
+            attron(COLOR_PAIR(2)); // white text on black background
+            break;
+        }
 
         clean_score();
 
@@ -138,6 +191,7 @@ long int start()
             break;
         }
 
+        attron(COLOR_PAIR(4));
         printw("%ld", score);
     }
 
