@@ -1,6 +1,7 @@
 #include <ncurses.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <locale.h>
 
 #include "include/screen.h"
 
@@ -10,6 +11,9 @@ int dim_x, dim_y; // windows dimensions
 void start_s()
 {
     int x = 10, y = 10;
+
+    // enable unicode support
+    setlocale(LC_ALL, "");
 
     initscr(); // start ncurses
 

@@ -9,7 +9,7 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"*.c",
-				"-lncurses",
+				"-lncursesw",
 				"-lvlc",
 				"-o",
 				"${fileDirname}/main"

@@ -6,6 +6,7 @@
 #include "include/game.h"
 #include "include/vlc.h"
 #include "include/screen.h"
+#include "include/gameplay.h"
 
 // Configure new game
 void ngame(PLAYER *P)
@@ -52,6 +53,9 @@ long int start()
     int key;
     long int score = 0;
 
+    VECTOR*Pl;
+    ENEMY*E1;
+
     clear_s(); // clear screen
 
     if (O.mstate)
@@ -82,15 +86,16 @@ long int start()
     refresh_s();       // refresh window
 
     // set cursor position
-    x = dim_x / 2;
-    y = dim_y / 2;
-    move(y, x);
+    Pl->xv = dim_x / 2;
+    Pl->yv = dim_y / 2;
+
+    move(Pl->yv, Pl->xv);
 
     curs_set(0); // remove cursor
 
     sprint("|");
 
-    move(y-1, x);
+    move(Pl->yv - 1, Pl->xv);
     sprint("^");
 
     set_escdelay(0.1);
@@ -98,29 +103,13 @@ long int start()
     while (1)
     {
         noecho(); // no writing echo in terminal
+
         key = getch(); // captching key writed
 
-        // remove previous vector position
-        move(y-1, x-1);
-        printw(" ");
-        move(y-1, x);
-        printw(" ");
-        move(y-1, x+1);
-        printw(" ");
+        //E1->xv = 2;
+        //E1->yv = dim_y / 2 - 1;
 
-        move(y, x-1);
-        printw(" ");
-        move(y, x);
-        printw(" ");
-        move(y, x+1);
-        printw(" ");
-
-        move(y+1, x-1);
-        printw(" ");
-        move(y+1, x);
-        printw(" ");
-        move(y+1, x+1);
-        printw(" ");
+        clean_vector(Pl->xv, Pl->yv);
 
         // exiting game
         if (key == 27)
@@ -129,84 +118,15 @@ long int start()
             break;
         }
 
-        // moving up
-        if (key == KEY_UP) 
-        {
-            y--;
-            if (y == 2)
-            {    
-                y++;
-                score-=2;
-            }
-            move(y, x);
-            printw("|");
+        move_vector(key, Pl, &score);
+        //move_enemy(E1, Pl);
 
-            move(y-1,x);
-            printw("^");
-        }
-
-        // moving down
-        if (key == KEY_DOWN) 
-        {
-            y++;
-            if (y == (dim_y - 2))
-            {    
-                y--;
-                score-=2;
-            }
-            move(y, x);
-            printw("|");
-
-            move(y+1,x);
-            printw("v");
-        }
-
-        // moving left
-        if (key == KEY_LEFT)
-        {
-            x--;
-            if (x == 1)
-            {
-                x++;
-                score-=2;
-            }
-            move(y, x);
-            printw("-");
-
-            move(y, x-1);
-            printw("<");
-        }
-
-        // moving right
-        if (key == KEY_RIGHT)
-        {
-            x++;
-            if (x == (dim_x - 2))
-            {
-                x--;
-                score-=2;
-            }
-            move(y, x);
-            printw("-");
-
-            move(y, x+1);
-            printw(">");
-        }
-
-        //clean score
-        move(1, dim_x-5);
-        printw(" ");
-        move(1, dim_x-4);
-        printw(" ");
-        move(1, dim_x-3);
-        printw(" ");
-        move(1, dim_x-2);
-        printw(" ");
+        clean_score();
 
         // increment score
-        move(1, dim_x-6); // set cursor position
+        move(1, dim_x - 6); // set cursor position
         score++;
-        
+
         if (score < 0)
         {
             move(dim_y / 2, dim_x / 2 - 4);
@@ -214,6 +134,7 @@ long int start()
             refresh();
 
             sleep(2);
+            attron(COLOR_PAIR(2)); // white text on black background
             break;
         }
 
@@ -222,7 +143,7 @@ long int start()
 
     if (O.mstate)
     {
-        exit_vlc(); //closing vlc
+        exit_vlc();   // closing vlc
         init_music(); // starting main menu music
     }
 
@@ -233,8 +154,8 @@ long int start()
     keypad(stdscr, 0);
     refresh();
 
-    if(score < 0)
-    score = 0;
+    if (score < 0)
+        score = 0;
 
     return score;
 }

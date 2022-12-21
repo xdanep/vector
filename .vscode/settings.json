@@ -4,7 +4,8 @@
         "stdio.h": "c",
         "function.h": "c",
         "main.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "game.h": "c"
     },
     "editor.fontFamily": "Consolas,'Courier New', monospace",
     "editor.fontSize": 15
