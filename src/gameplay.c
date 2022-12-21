@@ -48,7 +48,7 @@ void move_vector(int key, VECTOR *Pl, long int *score)
         y--;
         if (y == 2)
         {
-            y++;
+            y = dim_y - 3;
             *score -= 2;
         }
         move(y, x);
@@ -64,7 +64,7 @@ void move_vector(int key, VECTOR *Pl, long int *score)
         y++;
         if (y == (dim_y - 2))
         {
-            y--;
+            y = 3;
             *score -= 2;
         }
         move(y, x);
@@ -80,7 +80,7 @@ void move_vector(int key, VECTOR *Pl, long int *score)
         x--;
         if (x == 1)
         {
-            x++;
+            x = dim_x - 3;
             *score -= 2;
         }
         move(y, x);
@@ -96,7 +96,7 @@ void move_vector(int key, VECTOR *Pl, long int *score)
         x++;
         if (x == (dim_x - 2))
         {
-            x--;
+            x = 2;
             *score -= 2;
         }
         move(y, x);
