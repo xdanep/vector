@@ -25,7 +25,9 @@ void init_dir()
     if (user == NULL)       // verifying memory
     {
         printf("Cannot allocate dynamic memory");
+        
         free(user);
+
         exit(EXIT_FAILURE);
     }
 
@@ -37,6 +39,7 @@ void init_dir()
     else
     {
         printf("Invalid user, for security reasons the program will exit");
+
         exit(EXIT_FAILURE);
     }
 
@@ -50,6 +53,8 @@ void init_dir()
         if (errno != EEXIST)
         {
             printf("Error: %s, enter to exit\n", strerror(errno));
+
+            setbuf(stdin, NULL);
             getchar();
         }
     }
@@ -63,6 +68,7 @@ void init_dir()
         if (errno != EEXIST)
         {
             printf("Error: %s, enter to exit\n", strerror(errno));
+            setbuf(stdin, NULL);
             getchar();
         }
     }
@@ -154,6 +160,7 @@ unsigned short int LoadGame(PLAYER *P)
     {
         move_c(dim_x / 2 - 8, dim_y / 2 + 4);   // moving pinter
         sprint("No data saved, press enter to continue\n");
+
         setbuf(stdin, NULL);                // cleaning buffer
         getchar();                          // enter to return
 

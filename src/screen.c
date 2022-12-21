@@ -19,23 +19,30 @@ void start_s()
     {
         endwin(); // close ncurses
         refresh();
+
         fputs("Could not use colors.", stderr);
+
         exit(EXIT_FAILURE);
     }
 
     init_pair(1, COLOR_WHITE, COLOR_BLACK); // set white text on black background
     attron(COLOR_PAIR(1));                  // apply color's configuration
     box(stdscr, 0, 0);                      // draw a box in the screen
+    
     refresh();
 
+    // move cursor
     x = dim_x / 2 - 2;
     y = dim_y / 2;
     move(y, x);
+
     curs_set(0); // remove cursor
+
     printw("VECTOR");
     refresh();
+
     sleep(3);
-    curs_set(1);
+    curs_set(1); // insert cursor
 }
 
 // Move pointer

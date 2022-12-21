@@ -18,12 +18,14 @@ char dir[100];
 
 int main(int argc, char *argv[])
 {
+    unsigned short int select = 5, gst; // selector, game state
+
     cli(argc, argv);
 
-    unsigned short int select = 5, gst; // selector, game st
-
     init_option(&O);
+
     init_dir();
+
     gst = LoadOptions(&O);
 
     if (gst)
@@ -43,21 +45,26 @@ int main(int argc, char *argv[])
 
     do
     {
-        clear_s(); // clear terminal
+        clear_s();
         menu();
+
         move_c(dim_x / 2 - 8, dim_y / 2 + 4);
         sprint("> ");
+        
+        // Select an option from the menu
         scan("%hu", &select);
 
         if (select == 1)
         {
             ngame(&P);
+
             SaveGame(&P);
 
             if (O.mstate)
                 exit_vlc();
 
             start();
+
             select = 5;
         }
         else if (select == 2)
@@ -70,6 +77,7 @@ int main(int argc, char *argv[])
                     exit_vlc();
 
                 start();
+
                 select = 5;
             }
             else
@@ -83,12 +91,14 @@ int main(int argc, char *argv[])
         {
             options();
             SaveOptions(&O);
+
             select = 5;
         }
 
         else if (select == 4)
         {
             controls();
+
             select = 5;
         }
 
@@ -99,9 +109,11 @@ int main(int argc, char *argv[])
         {
             move_c(dim_x / 2 - 8, dim_y / 2 + 4);
             sprint("Wrong selection, press enter to select again");
+
             setbuf(stdin, NULL);
             getchar();
         }
+        
     } while (select > 4);
 
     exit_s();
