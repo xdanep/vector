@@ -106,8 +106,8 @@ long int start()
 
         key = getch(); // captching key writed
 
-        //E1->xv = 2;
-        //E1->yv = dim_y / 2 - 1;
+        E1->xv = 2;
+        E1->yv = dim_y / 2 - 1;
 
         clean_vector(Pl->xv, Pl->yv);
 
@@ -119,7 +119,7 @@ long int start()
         }
 
         move_vector(key, Pl, &score);
-        //move_enemy(E1, Pl);
+        move_enemy(E1, Pl);
 
         clean_score();
 
