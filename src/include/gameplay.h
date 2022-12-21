@@ -8,6 +8,7 @@ typedef struct
 {
     int xv;
     int yv;
+    int appear;
 }ENEMY;
 
 

@@ -10,28 +10,28 @@
 void clean_vector(int x, int y)
 {
     // up
-    move(y - 1, x - 1);
+    // move(y - 1, x - 1);
+    // printw(" ");
+    move(y - 1, x);//
     printw(" ");
-    move(y - 1, x);
-    printw(" ");
-    move(y - 1, x + 1);
-    printw(" ");
+    // move(y - 1, x + 1);
+    // printw(" ");
 
     // middle
-    move(y, x - 1);
-    printw(" ");
-    move(y, x);
-    printw(" ");
-    move(y, x + 1);
-    printw(" ");
+    move(y, x - 1);//
+    printw(" ");//
+    move(y, x);//
+    printw(" ");//
+    move(y, x + 1);//
+    printw(" ");//
 
     // down
-    move(y + 1, x - 1);
+    // move(y + 1, x - 1);
+    // printw(" ");
+    move(y + 1, x);//
     printw(" ");
-    move(y + 1, x);
-    printw(" ");
-    move(y + 1, x + 1);
-    printw(" ");
+    // move(y + 1, x + 1);
+    // printw(" ");
 }
 
 // Move vector position

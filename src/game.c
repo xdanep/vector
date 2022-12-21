@@ -51,11 +51,23 @@ long int start()
 {
     int x = 10, y = 10;
     int key;
-    long int score = 0;
-    int xp[100], yp[100], i, ie = 5;
+    long int score = 900;
+    int xp[100], yp[100], i, ie = 5, ie2 = 4, ie3 = 3;
 
     VECTOR Pl;
-    ENEMY E1, E2;
+    ENEMY E1, E2, E3;
+
+    E1.xv = 2;
+    E1.yv = dim_y / 2 - 1;
+    E1.appear = 1;
+
+    E2.xv = 2;
+    E2.yv = dim_y / 2 - 1;
+    E2.appear = 0;
+
+    E3.xv = 2;
+    E3.yv = dim_y / 2 - 1;
+    E3.appear = 0;
 
     bonusp_p(xp, yp, 100);
 
@@ -101,9 +113,6 @@ long int start()
     move(Pl.yv - 1, Pl.xv);
     sprint("^");
 
-    E1.xv = 2;
-    E1.yv = dim_y / 2 - 1;
-
     set_escdelay(0.1);
 
     noecho(); // no writing echo in terminal
@@ -115,13 +124,6 @@ long int start()
 
         key = getch(); // captching key writed
 
-        attron(COLOR_PAIR(4));
-        print_bonus(xp[i], yp[i]);
-
-        clean_vector(Pl.xv, Pl.yv);
-
-        clean_vector(E1.xv, E1.yv);
-
         // exiting game
         if (key == 27)
         {
@@ -129,41 +131,111 @@ long int start()
             break;
         }
 
+        attron(COLOR_PAIR(4));
+        print_bonus(xp[i], yp[i]);
+
+        clean_vector(Pl.xv, Pl.yv);
+
+        clean_vector(E1.xv, E1.yv);
+
+        if(E2.appear)
+        clean_vector(E2.xv, E2.yv);
+
+        if(E3.appear)
+        clean_vector(E3.xv, E3.yv);
+
         attron(COLOR_PAIR(1));
         move_vector(key, &Pl, &score);
 
         attron(COLOR_PAIR(2));
         move_enemy(&E1, &Pl);
 
+        if(E2.appear)
+        move_enemy(&E2, &Pl);
+
+        if(E3.appear)
+        move_enemy(&E3, &Pl);
+
         if (Pl.xv == xp[i] && Pl.yv == yp[i])
         {
             i++;
             score += 100;
+            
+            if(score >= 1000)
+            {
+                score+=100;
+                E2.appear = 1;
+            }
 
-            clean_vector(E1.xv, E1.yv);
-
+            if(score >= 3000)
+            {
+                score+=200;
+                E3.appear = 1;
+            }
+            /*
             if (ie < 95)
                 ie += 2;
 
             else
                 ie-=70;
 
-            while(xp[i] - xp[ie] <= 15 && yp[i] - yp[ie] <= 15 && Pl.xv - xp[ie] <= 10 && Pl.yv - yp[ie] <= 10)
-            {
-                ie++;
+            clean_vector(E1.xv, E1.yv);
 
-                if(ie == 99)
-                ie = 1;
-            }
+            if(E2.appear)
+            clean_vector(E2.xv, E2.yv);
+
+            if(E3.appear)
+            clean_vector(E3.xv, E3.yv);
 
             E1.xv = xp[ie];
             E1.yv = yp[ie];
 
+            if(E2.appear)
+            {   
+                E2.xv = xp[ie2];
+                E2.yv = yp[ie2];
+            }
+
+            if(E3.appear)
+            {
+                E3.xv = xp[ie3];
+                E3.yv = yp[ie3];
+            }
+
             attron(COLOR_PAIR(2));
             move_enemy(&E1, &Pl);
+
+            if(E2.appear)
+            move_enemy(&E2, &Pl);
+
+            if(E3.appear)
+            move_enemy(&E3, &Pl);
+            */
         }
 
         if (E1.xv == Pl.xv && E1.yv == Pl.yv)
+        {
+            move(dim_y / 2, dim_x / 2 - 4);
+            printw("GAME OVER");
+            refresh();
+
+            sleep(2);
+            attron(COLOR_PAIR(2)); // white text on black background
+            break;
+        }
+
+        if (E2.appear && E2.xv == Pl.xv && E2.yv == Pl.yv)
+        {
+            move(dim_y / 2, dim_x / 2 - 4);
+            printw("GAME OVER");
+            refresh();
+
+            sleep(2);
+            attron(COLOR_PAIR(2)); // white text on black background
+            break;
+        }
+
+        if (E3.appear && E3.xv == Pl.xv && E3.yv == Pl.yv)
         {
             move(dim_y / 2, dim_x / 2 - 4);
             printw("GAME OVER");
@@ -180,16 +252,16 @@ long int start()
         move(1, dim_x - 6); // set cursor position
         score++;
 
-        if (score < 0)
-        {
-            move(dim_y / 2, dim_x / 2 - 4);
-            printw("GAME OVER");
-            refresh();
+        // if (score < 0)
+        // {
+        //     move(dim_y / 2, dim_x / 2 - 4);
+        //     printw("GAME OVER");
+        //     refresh();
 
-            sleep(2);
-            attron(COLOR_PAIR(2)); // white text on black background
-            break;
-        }
+        //     sleep(2);
+        //     attron(COLOR_PAIR(2)); // white text on black background
+        //     break;
+        // }
 
         attron(COLOR_PAIR(4));
         printw("%ld", score);
