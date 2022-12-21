@@ -13,6 +13,8 @@ The project have this features:
 - An options section with language and music switchers
 - Controls menu
 
+You can see your score history at ~/.config/vector/score.txt
+
 I hope this will be useful to you. Thanks for using Vector.
 
 # Instalation:
