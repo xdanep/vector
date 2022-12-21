@@ -88,7 +88,7 @@ void start()
     curs_set(0); // remove cursor
     sprint("^");
 
-    set_escdelay(0);
+    set_escdelay(0.1);
 
     while (1)
     {
