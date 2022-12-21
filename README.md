@@ -4,6 +4,7 @@ if you don't know a lot about programming, this base will help you to finish you
 You can also use this code to learn about the algorithm that i used.
 
 Vector is now a full video game, you can see how it is in the screenshots below.
+You must reach the highest score possible by running away from your enemies.
 
 The project have this features:
 - A simple main menu
