@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "include/cli.h"
+#include "include/cmd.h"
 
 /* READ ONLY VAR */
 const char *const vector_copyright = ("Copyright (C) 2022 Agustín Gutíerrez, Xdanep.");
@@ -43,7 +43,7 @@ void extended(void)
 }
 
 /* CLI arguments */
-void cli(int argc, char *argv[])
+void cmd(int argc, char *argv[])
 {
     if (argc == 2)
     { 

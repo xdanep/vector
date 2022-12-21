@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "include/cli.h"
+#include "include/cmd.h"
 #include "include/files.h"
 #include "include/game.h"
 #include "include/main.h"
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 {
     unsigned short int select = 5, gst; // selector, game state
 
-    cli(argc, argv);
+    cmd(argc, argv);
 
     init_option(&O);
 

@@ -11,7 +11,7 @@ CLIBS=-lncurses -lvlc
 CFLAGS=-Wall -Wextra -O2 -g -std=gnu17
 
 OBJS= \
-	cli.o \
+	cmd.o \
 	files.o \
 	game.o \
 	main.o \
