@@ -86,6 +86,10 @@ void start()
     move(y, x);
 
     curs_set(0); // remove cursor
+
+    sprint("|");
+
+    move(y-1, x);
     sprint("^");
 
     set_escdelay(0.1);
@@ -94,6 +98,28 @@ void start()
     {
         noecho(); // no writing echo in terminal
         key = getch(); // captching key writed
+
+        // remove previous vector position
+        move(y-1, x-1);
+        printw(" ");
+        move(y-1, x);
+        printw(" ");
+        move(y-1, x+1);
+        printw(" ");
+
+        move(y, x-1);
+        printw(" ");
+        move(y, x);
+        printw(" ");
+        move(y, x+1);
+        printw(" ");
+
+        move(y+1, x-1);
+        printw(" ");
+        move(y+1, x);
+        printw(" ");
+        move(y+1, x+1);
+        printw(" ");
 
         // exiting game
         if (key == 27)
@@ -105,60 +131,58 @@ void start()
         // moving up
         if (key == KEY_UP) 
         {
-            move(y, x);
-            printw(" ");
-
             y--;
             if (y == 1)
                 y++;
             
             move(y, x);
+            printw("|");
+
+            move(y-1,x);
             printw("^");
         }
 
         // moving down
         if (key == KEY_DOWN) 
         {
-            move(y, x);
-            printw(" ");
-
             y++;
             if (y == (dim_y - 1))
                 y--;
 
             move(y, x);
+            printw("|");
+
+            move(y+1,x);
             printw("v");
         }
 
         // moving left
         if (key == KEY_LEFT)
         {
-            move(y, x);
-            printw(" ");
-
             x--;
             if (x == 0)
                 x++;
 
             move(y, x);
+            printw("-");
+
+            move(y, x-1);
             printw("<");
         }
 
         // moving right
         if (key == KEY_RIGHT)
         {
-            move(y, x);
-            printw(" ");
-
             x++;
             if (x == (dim_x - 2))
                 x--;
 
             move(y, x);
+            printw("-");
+
+            move(y, x+1);
             printw(">");
         }
-
-        refresh_s();
     }
 
     if (O.mstate)
