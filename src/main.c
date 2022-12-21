@@ -14,7 +14,7 @@ PLAYER P;
 OPTION O;
 
 char dir[100];
-char dir2[100];
+// char dir2[100];
 
 int main(int argc, char *argv[])
 {

@@ -15,6 +15,7 @@ void init_dir()
     char *user;
     unsigned short int i;
 
+    // creating main directory
     strcpy(dir, "/home/");
 
     i = strlen(getlogin());
@@ -39,6 +40,7 @@ void init_dir()
     }
 
     free(user);
+
     strcat(dir,"/.config/");
     strcat(dir, "vector/");
 
@@ -50,7 +52,8 @@ void init_dir()
             getchar();
         }
     }
-
+    /*
+    // creating configurations directory
     strcpy(dir2, dir);
     strcat(dir2, "conf/");
 
@@ -62,6 +65,7 @@ void init_dir()
             getchar();
         }
     }
+    */
 }
 
 unsigned short int LoadOptions(OPTION *O)
@@ -69,7 +73,7 @@ unsigned short int LoadOptions(OPTION *O)
     FILE *fPtr;
     char dirl[200];
 
-    strcpy(dirl, dir2);
+    strcpy(dirl, dir);
     strcat(dirl, "options.bin");
 
     if ((fPtr = fopen(dirl, "rb")) == NULL)
@@ -93,7 +97,7 @@ void SaveOptions(OPTION *O)
     FILE *fPtr;
     char dirl[200];
 
-    strcpy(dirl, dir2);
+    strcpy(dirl, dir);
     strcat(dirl, "options.bin");
 
     if ((fPtr = fopen(dirl, "wb")) == NULL)
