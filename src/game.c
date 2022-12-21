@@ -50,6 +50,7 @@ void start()
 {
     int x = 10, y = 10;
     int key;
+    int score = 0;
 
     clear_s(); // clear screen
 
@@ -132,9 +133,11 @@ void start()
         if (key == KEY_UP) 
         {
             y--;
-            if (y == 1)
+            if (y == 2)
+            {    
                 y++;
-            
+                score-=2;
+            }
             move(y, x);
             printw("|");
 
@@ -146,9 +149,11 @@ void start()
         if (key == KEY_DOWN) 
         {
             y++;
-            if (y == (dim_y - 1))
+            if (y == (dim_y - 2))
+            {    
                 y--;
-
+                score-=2;
+            }
             move(y, x);
             printw("|");
 
@@ -160,9 +165,11 @@ void start()
         if (key == KEY_LEFT)
         {
             x--;
-            if (x == 0)
+            if (x == 1)
+            {
                 x++;
-
+                score-=2;
+            }
             move(y, x);
             printw("-");
 
@@ -175,14 +182,31 @@ void start()
         {
             x++;
             if (x == (dim_x - 2))
+            {
                 x--;
-
+                score-=2;
+            }
             move(y, x);
             printw("-");
 
             move(y, x+1);
             printw(">");
         }
+
+        //clean score
+        move(1, dim_x-5);
+        printw(" ");
+        move(1, dim_x-4);
+        printw(" ");
+        move(1, dim_x-3);
+        printw(" ");
+        move(1, dim_x-2);
+        printw(" ");
+
+        // increment score
+        move(1, dim_x-6); // set cursor position
+        score++;
+        printw("%d", score);
     }
 
     if (O.mstate)
@@ -190,6 +214,7 @@ void start()
         exit_vlc(); //closing vlc
         init_music(); // starting main menu music
     }
+
     // restoring default screen options
     clear_s();
     echo();
