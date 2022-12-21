@@ -3,11 +3,13 @@ Vector is a brand new open source project that you can use to build your own sna
 if you don't know a lot about programming, this base will help you to finish your project quickly.
 You can also use this code to learn about the algorithm that i used.
 
+Vector now is a complete game, you can see how it is in the screenshots below.
+
 The project have this features:
 - A simple main menu
 - A new game section 
 - Possibility to load game 
-- An options section with language and music switchers.
+- An options section with language and music switchers
 - Controls menu
 
 I hope this will be useful to you. Thanks for using Vector.
