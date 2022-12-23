@@ -14,6 +14,7 @@ OBJS= \
 	cmd.o \
 	files.o \
 	game.o \
+	gameplay.o \
 	main.o \
 	menu.o \
 	screen.o \

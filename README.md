@@ -36,13 +36,13 @@ Below you can find compiling commands.
 
 # Dependencies:
 
-### -`libncurses`
+### -`ncurses`
 
 ### -`gcc`
 
-### -`libsdl2`
+### -`sdl2`
 
-### -`libsdl2-mixer`
+### -`sdl2_mixer`
 
 # To compile:
 

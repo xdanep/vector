@@ -51,8 +51,9 @@ long int start()
 {
     int x = 10, y = 10;
     int key;
-    long int score = 0;
-    int xp[100], yp[100], i, ie = 5, ie2 = 4, ie3 = 3;
+    long int score = 900;
+    int xp[100], yp[100], i = 0;
+    // int ie = 5, ie2 = 4, ie3 = 3;
 
     VECTOR Pl;
     ENEMY E1, E2, E3;
