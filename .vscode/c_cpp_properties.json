@@ -11,7 +11,9 @@
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64",
             "compilerArgs": [
-                "-lncurses"
+                "-lncursesw",
+                "-lSDL2_mixer",
+                "-lSDL2"
             ],
             "configurationProvider": "ms-vscode.makefile-tools"
         }

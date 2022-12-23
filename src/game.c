@@ -4,7 +4,7 @@
 #include <string.h>
 
 #include "include/game.h"
-#include "include/vlc.h"
+#include "include/sound.h"
 #include "include/screen.h"
 #include "include/gameplay.h"
 
@@ -74,7 +74,7 @@ long int start()
     clear_s(); // clear screen
 
     if (O.mstate)
-        game_music(); // start music
+        sound(SONG2, SOUNDFREQ, SOUNDBUFLEN); // start music
 
     // setting colors
     init_pair(1, P.cstate, COLOR_BLACK);      // user's choice text on black background
@@ -113,12 +113,13 @@ long int start()
     move(Pl.yv - 1, Pl.xv);
     sprint("^");
 
-    set_escdelay(0.1);
+    set_escdelay(0);
 
     noecho(); // no writing echo in terminal
 
     while (1)
     {
+        //  Restart bonus position coordinates
         if(i == 99)
         bonusp_p(xp, yp, 100);
 
@@ -131,9 +132,11 @@ long int start()
             break;
         }
 
+        // Printing bonus
         attron(COLOR_PAIR(4));
         print_bonus(xp[i], yp[i]);
 
+        // Cleaning vectors
         clean_vector(Pl.xv, Pl.yv);
 
         clean_vector(E1.xv, E1.yv);
@@ -144,6 +147,7 @@ long int start()
         if(E3.appear)
         clean_vector(E3.xv, E3.yv);
 
+        // Moving vectors
         attron(COLOR_PAIR(1));
         move_vector(key, &Pl, &score);
 
@@ -156,17 +160,20 @@ long int start()
         if(E3.appear)
         move_enemy(&E3, &Pl);
 
+        // Increment score
         if (Pl.xv == xp[i] && Pl.yv == yp[i])
         {
             i++;
             score += 100;
             
+            // Second enemy
             if(score >= 1000)
             {
                 score+=100;
                 E2.appear = 1;
-            }
+            }   
 
+            // Third enemy
             if(score >= 3000)
             {
                 score+=200;
@@ -213,6 +220,7 @@ long int start()
             */
         }
 
+        // Game over by enemy collision
         if (E1.xv == Pl.xv && E1.yv == Pl.yv)
         {
             move(dim_y / 2, dim_x / 2 - 4);
@@ -263,14 +271,15 @@ long int start()
         //     break;
         // }
 
+        // Printing score
         attron(COLOR_PAIR(4));
         printw("%ld", score);
     }
 
     if (O.mstate)
     {
-        exit_vlc();   // closing vlc
-        init_music(); // starting main menu music
+        cleansound();   // closing vlc
+        sound(SONG1, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
     }
 
     // restoring default screen options
@@ -280,8 +289,8 @@ long int start()
     keypad(stdscr, 0);
     refresh();
 
-    if (score < 0)
-        score = 0;
+    // if (score < 0)
+    //     score = 0;
 
     return score;
 }

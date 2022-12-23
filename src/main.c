@@ -8,7 +8,7 @@
 #include "include/main.h"
 #include "include/menu.h"
 #include "include/screen.h"
-#include "include/vlc.h"
+#include "include/sound.h"
 
 PLAYER P;
 OPTION O;
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
         if (O.mstate)
         {
-            init_music();
+            sound(SONG1, SOUNDFREQ, SOUNDBUFLEN);
         }
     }
 
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
             SaveGame(&P);
 
             if (O.mstate)
-                exit_vlc();
+                cleansound();
 
             score = start();
 
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
             if (gst)
             {
                 if (O.mstate)
-                    exit_vlc();
+                    cleansound();
 
                 score = start();
 

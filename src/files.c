@@ -7,7 +7,7 @@
 
 #include "include/screen.h"
 #include "include/files.h"
-#include "include/vlc.h"
+#include "include/sound.h"
 
 // Create game files directory
 void init_dir()
@@ -95,7 +95,7 @@ unsigned short int LoadOptions(OPTION *O)
 
     if (O->mstate)                          // music initializator
     {
-        init_music();
+        sound(SONG1, SOUNDFREQ, SOUNDBUFLEN);
     }
 
     return 0;

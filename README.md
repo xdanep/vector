@@ -40,7 +40,9 @@ Below you can find compiling commands.
 
 ### -`gcc`
 
-### -`libvlc`
+### -`libsdl2`
+
+### -`libsdl2-mixer`
 
 # To compile:
 

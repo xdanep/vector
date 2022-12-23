@@ -7,8 +7,8 @@
 ##
 
 CC=gcc
-CLIBS=-lncurses -lvlc
-CFLAGS=-Wall -Wextra -O2 -g -std=gnu17
+CLIBS=-lncursesw -lSDL2_mixer -lSDL2
+CFLAGS=-pipe -O2 -flto -Wall -Wextra -fPIC -std=gnu17
 
 OBJS= \
 	cmd.o \
@@ -17,7 +17,7 @@ OBJS= \
 	main.o \
 	menu.o \
 	screen.o \
-	vlc.o 
+	sound.o 
 
 default: all
 

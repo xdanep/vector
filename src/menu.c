@@ -4,7 +4,7 @@
 
 #include "include/menu.h"
 #include "include/screen.h"
-#include "include/vlc.h"
+#include "include/sound.h"
 
 // Initialize OPTION structure
 void init_option(OPTION *O)
@@ -89,7 +89,7 @@ void setmusic(OPTION *O)
 
             sprint("Music On\n");
 
-            init_music();
+            sound(SONG1, SOUNDFREQ, SOUNDBUFLEN);
         }
 
         else
@@ -98,7 +98,7 @@ void setmusic(OPTION *O)
             
             sprint("Music OFF\n");
 
-            exit_vlc();
+            cleansound();
         }
     }
 
