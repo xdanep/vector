@@ -227,7 +227,15 @@ long int start()
             printw("GAME OVER");
             refresh();
 
+            if (O.mstate)
+            {
+                cleansound();
+                wsound(SONG3, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
+                sleep(1);
+                cleansound();   // closing vlc
+            }
             sleep(2);
+
             attron(COLOR_PAIR(2)); // white text on black background
             break;
         }
@@ -238,7 +246,15 @@ long int start()
             printw("GAME OVER");
             refresh();
 
+            if (O.mstate)
+            {
+                cleansound();
+                wsound(SONG3, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
+                sleep(1);
+                cleansound();   // closing vlc
+            }
             sleep(2);
+
             attron(COLOR_PAIR(2)); // white text on black background
             break;
         }
@@ -248,8 +264,16 @@ long int start()
             move(dim_y / 2, dim_x / 2 - 4);
             printw("GAME OVER");
             refresh();
-
+            
+            if (O.mstate)
+            {
+                cleansound();
+                wsound(SONG3, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
+                sleep(1);
+                cleansound();   // closing vlc
+            }
             sleep(2);
+
             attron(COLOR_PAIR(2)); // white text on black background
             break;
         }

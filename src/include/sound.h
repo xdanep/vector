@@ -8,9 +8,9 @@
 #include <unistd.h>
 #include <ncurses.h>
 
-#define SONG1 "/opt/vector/songs/menusound1.xm"
-#define SONG2 "/opt/vector/songs/gamesound.mp3"
-#define SONG3 "/opt/vector/songs/gameover.wav"
+#define SONG1 "/opt/vector/music/menusound.xm"
+#define SONG2 "/opt/vector/music/gamesound.mp3"
+#define SONG3 "/opt/vector/music/gameover.wav"
 
 #define MAXCHAN 32
 #define SOUNDFREQ 44100
