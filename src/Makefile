@@ -7,7 +7,7 @@
 ##
 
 CC=gcc
-LLIBS=-lncurses -lSDL2_mixer -lSDL2 -lbsd
+LLIBS=-lncursesw -lSDL2_mixer -lSDL2 -lbsd
 CFLAGS=-pipe -O2 -flto -Wall -Wextra -fPIC -std=gnu17 -DLIBBSD_OVERLAY -I/usr/include/bsd
 
 OBJS= \
