@@ -1,6 +1,6 @@
 // DEFINE FOR CLI ARGUMENTS
 #define PROJNAME "Vector"
-#define DISTVERSION "1.1.1"
+#define DISTVERSION "1.1.2"
 #define BUILDVERSION 1
 #define RELSTATUS "release"
 #define BUILDPTFORM "x86_64-pc-linux-gnu"
