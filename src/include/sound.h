@@ -10,8 +10,8 @@
 #include <stdbool.h>
 #include <string.h>
 
-#define SONG1 "rfsound_-_Dark_Epic_Build_Up__Full_.ogg"
-#define SONG2 "Vitality_-_Electro_Shock_Sport_Dance.ogg"
+#define SONG1 "menusound.xm"
+#define SONG2 "gamesound.mp3"
 #define SONG3 "gameover.wav"
 
 #define MAXCHAN 32
