@@ -45,12 +45,12 @@ void extended(void)
 /* CLI arguments */
 void cmd(int argc, char *argv[])
 {
-    if (argc > 1)
+    if (argc == 2)
     { 
         /* if (argument cmd 1) == argv_help */
         if (!strcmp(argv[1], argv_help) || !strcmp(argv[1], argv_hel)) // || if (argument cmd 1) == argv_hel...
         { 
-            puts("--version\t\t\tProgram version\n");
+            printf("--version\t\t\tProgram version\n");
             exit(EXIT_SUCCESS);
         } 
         
@@ -60,11 +60,6 @@ void cmd(int argc, char *argv[])
             show_vector_version();
             extended();
             exit(EXIT_SUCCESS);
-        }
-        else
-        {
-            puts("invalid argument\n");
-            exit(EXIT_FAILURE);
         }
     }
 }

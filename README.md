@@ -44,8 +44,6 @@ Below you can find compiling commands.
 
 ### -`sdl2_mixer`
 
-### -`libbsd`
-
 # To compile:
 
 ### $`make`
