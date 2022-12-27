@@ -32,7 +32,6 @@ char music_game_over[70];
     //   Mix_Music;
     Mix_Music *mod = NULL;
     Mix_Chunk *wmod = NULL;
-    int stream;
 #endif
 
 bool nosound = false;
