@@ -1,55 +1,124 @@
-/* sound.c -- API for song of vector */
-
 //
-// sound.c
-// Vector
+// sound.c -- music API
+//
+// This file is owned by the vector project
 //
 // Created by Aarch-64 on 21/12/2022
 // Copyright (C) 2022 Agustín Gutíerrez. All rights reserved.
 //
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
+#ifdef WIN32
+  #include <fmod.h>
+#else
+  #include <SDL2/SDL.h>
+  #include <SDL2/SDL_mixer.h>
+#endif
 
 #include "include/sound.h"
 #include "include/screen.h"
 
-// Use for wav files
-//   Mix_Chunk;
-// Use for music files
-//   Mix_Music;
-Mix_Music *mod = NULL;
-Mix_Chunk *wmod = NULL;
+char out_sound_dir[70];
+char music_ini[70];
+char music_game[70];
+char music_game_over[70];
+
+#ifdef WIN32
+    FMUSIC_MODULE *mod = NULL;
+    FSOUND_STREAM *stream = NULL;
+#else
+    // Use for wav files
+    //   Mix_Chunk;
+    // Use for music files
+    //   Mix_Music;
+    Mix_Music *mod = NULL;
+    Mix_Chunk *wmod = NULL;
+    int stream;
+#endif
+
+bool nosound = false;
 
 // Initialize SDL
 void init_sdl(void)
 {
+    openlog("Logs", LOG_PID, LOG_USER);
+    syslog(LOG_INFO, "Start logging");
+    closelog();
+    
     if (SDL_Init(SDL_INIT_AUDIO) < 0) 
+    {
         winerr("Failed to init SDL");
+        nosound = true;
+    }
+    else
+    {
+        #ifdef WIN32
+          strcpy_s(out_sound_dir, sizeof(out_sound_dir, "/opt/vector/music/");
+        #else
+          strlcpy(out_sound_dir, "/opt/vector/music/", sizeof(out_sound_dir));
+        #endif
+        
+        #ifdef WIN32
+          strcpy_s(music_ini, sizeof(out_sound_dir, out_sound_dir);
+          strcat_s(music_ini, sizeof(out_sound_dir, SONG1);
+        #else
+          strlcpy(music_ini, out_sound_dir, sizeof(music_ini));
+          strlcat(music_ini, SONG1, sizeof(music_ini));
+        #endif
+        
+        #ifdef WIN32
+          strcpy_s(music_game, sizeof(out_sound_dir, out_sound_dir);
+          strcat_s(music_game, sizeof(out_sound_dir, SONG2);
+        #else
+          strlcpy(music_game, out_sound_dir, sizeof(music_game));
+          strlcat(music_game, SONG2, sizeof(music_game));
+        #endif
+
+        #ifdef WIN32
+          strcpy_s(music_game_over, sizeof(out_sound_dir, out_sound_dir);
+          strcat_s(music_game_over, sizeof(out_sound_dir, SONG3);
+        #else
+          strlcpy(music_game_over, out_sound_dir, sizeof(music_game_over));
+          strlcat(music_game_over, SONG3, sizeof(music_game_over));
+        #endif
+    }
 }
 
 // Example: SelfControl.mp3 | 44100 | 1024
 // standar for sound frequency: 44100
 // standar for sound buffer len:  1024
 void sound(void *sound, int sound_freq, int soundbufferlen)
-{
+{    
     if (sound == NULL)
+    {
       winerr("Error in Sound Library (path music).");
+      nosound = true;
+    }
     else if (sound_freq < 1)
+    {
       winerr("Error in Sound Library (sound freq).");
+      nosound = true;
+    }
     else if (soundbufferlen < 1)
+    {
       winerr("Error in Sound Library (sound buffer len).");
+      nosound = true;
+    }
 
     init_sdl();
-    
     //Initialize SDL_mixer 
     if (Mix_OpenAudio(sound_freq, MIX_DEFAULT_FORMAT, 2, soundbufferlen) < 0)
+    {
         ar_winerr("sound init failed (SDL_mixer)", Mix_GetError());
+        nosound = true;
+    }
        
     Mix_AllocateChannels(MAXCHAN);
     mod = Mix_LoadMUS(sound);
     if (mod == NULL)
+    {
       ar_winerr("Error in Sound Library (init music)", Mix_GetError());
+      nosound = true;
+    }
     else
       Mix_PlayMusic(mod, -1); // mix, while reproduction */ -1 = always reproduction | 1 = one reproduction */
 }
@@ -60,22 +129,37 @@ void sound(void *sound, int sound_freq, int soundbufferlen)
 void wsound(void *sound, int sound_freq, int soundbufferlen)
 {
     if (sound == NULL)
+    {
       winerr("Error in Sound Library (path music)");
+      nosound = true;
+    }
     else if (sound_freq < 1)
+    {
       winerr("Error in Sound Library (sound freq)");
+      nosound = true;
+    }
     else if (soundbufferlen < 1)
+    {
       winerr("Error in Sound Library (sound buffer len)");
+      nosound = true;
+    }
     
     init_sdl();
     
     //Initialize SDL_mixer 
     if (Mix_OpenAudio(sound_freq, MIX_DEFAULT_FORMAT, 2, soundbufferlen) < 0)
+    {
         ar_winerr("sound init failed (SDL_mixer)", Mix_GetError());
-       
+        nosound = true;
+    }
+    
     Mix_AllocateChannels(MAXCHAN);
     wmod = Mix_LoadWAV(sound);
     if (wmod == NULL)
-      ar_winerr("Error in Sound Library (init music)", Mix_GetError());
+    {
+        ar_winerr("Error in Sound Library (init music)", Mix_GetError());
+        nosound = true;
+    }
     else
       Mix_PlayChannel(-1, wmod, -1); // channel, mix, while reproduction */ -1 = always reproduction | 1 = one reproduction */
 }
@@ -83,21 +167,31 @@ void wsound(void *sound, int sound_freq, int soundbufferlen)
 // Example: SelfControl.mp3
 void stop_sound(void *sound)
 {
-    Mix_HaltMusic();
-    Mix_FreeMusic(sound);
+    #ifdef WIN32
+        FMUSIC_MODULE *mod = NULL;
+        FSOUND_STREAM *stream = NULL;
+    #else
+        Mix_HaltMusic(); // pause music
+        Mix_FreeMusic(sound); // free memory for music
+    #endif
 }
 
 // Example: SelfControl.wav
 void stop_wsound(void *sound)
 {
-    Mix_FreeChunk(sound);
+    Mix_FreeChunk(sound); // free memory for music
 }
 
 void cleansound(void)
 {
-    Mix_CloseAudio();
-    mod = NULL;
-    wmod = NULL;
+    #ifdef WIN32
+        FSOUND_Stream_Close(stream);
+    #else
+        Mix_CloseAudio();
+        SDL_Quit();
+        mod = NULL;
+        wmod = NULL;
+    #endif
 }
 
 // Extras

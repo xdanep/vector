@@ -89,7 +89,7 @@ void setmusic(OPTION *O)
 
             sprint("Music On\n");
 
-            sound(SONG1, SOUNDFREQ, SOUNDBUFLEN);
+            sound(music_ini, SOUNDFREQ, SOUNDBUFLEN);
         }
 
         else

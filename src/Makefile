@@ -7,8 +7,8 @@
 ##
 
 CC=gcc
-CLIBS=-lncursesw -lSDL2_mixer -lSDL2
-CFLAGS=-pipe -O2 -flto -Wall -Wextra -fPIC -std=gnu17
+LLIBS=-lncursesw -lSDL2_mixer -lSDL2 -lbsd
+CFLAGS=-pipe -O2 -flto -Wall -Wextra -fPIC -std=gnu17 -DLIBBSD_OVERLAY -I/usr/include/bsd
 
 OBJS= \
 	cmd.o \
@@ -18,14 +18,14 @@ OBJS= \
 	main.o \
 	menu.o \
 	screen.o \
-	sound.o 
+	sound.o
 
 default: all
 
 all: main
 
 main: $(OBJS)
-	$(CC) $(CFLAGS) -o vector $(OBJS) $(CLIBS)
+	$(CC) $(CFLAGS) -o vector $(OBJS) $(LLIBS)
 	
 clean:
 	@rm -rf *.o vector

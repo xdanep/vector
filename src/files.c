@@ -95,7 +95,7 @@ unsigned short int LoadOptions(OPTION *O)
 
     if (O->mstate)                          // music initializator
     {
-        sound(SONG1, SOUNDFREQ, SOUNDBUFLEN);
+        sound(music_ini, SOUNDFREQ, SOUNDBUFLEN);
     }
 
     return 0;

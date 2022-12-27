@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
         if (O.mstate)
         {
-            sound(SONG1, SOUNDFREQ, SOUNDBUFLEN);
+            sound(music_ini, SOUNDFREQ, SOUNDBUFLEN);
         }
     }
 

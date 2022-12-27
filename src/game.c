@@ -75,7 +75,7 @@ long int start()
     clear_s(); // clear screen
 
     if (O.mstate)
-        sound(SONG2, SOUNDFREQ, SOUNDBUFLEN); // start music
+        sound(music_game, SOUNDFREQ, SOUNDBUFLEN); // start music
 
     // setting colors
     init_pair(1, P.cstate, COLOR_BLACK);      // user's choice text on black background
@@ -231,7 +231,7 @@ long int start()
             if (O.mstate)
             {
                 cleansound();
-                wsound(SONG3, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
+                wsound(music_game_over, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
                 sleep(1);
                 cleansound();   // closing vlc
             }
@@ -250,7 +250,7 @@ long int start()
             if (O.mstate)
             {
                 cleansound();
-                wsound(SONG3, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
+                wsound(music_game_over, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
                 sleep(1);
                 cleansound();   // closing vlc
             }
@@ -269,9 +269,9 @@ long int start()
             if (O.mstate)
             {
                 cleansound();
-                wsound(SONG3, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
+                wsound(music_game_over, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
                 sleep(1);
-                cleansound();   // closing vlc
+                cleansound();   // closing sdl
             }
             sleep(2);
 
@@ -303,8 +303,8 @@ long int start()
 
     if (O.mstate)
     {
-        cleansound();   // closing vlc
-        sound(SONG1, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
+        cleansound();   // closing sdl
+        sound(music_ini, SOUNDFREQ, SOUNDBUFLEN); // starting main menu music
     }
 
     // restoring default screen options
